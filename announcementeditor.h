@@ -1,24 +1,22 @@
-#ifndef INFOEDITOR_H
-#define INFOEDITOR_H
+#ifndef ANNOUNCEMENTEDITOR_H
+#define ANNOUNCEMENTEDITOR_H
 
 #include <QWidget>
 #include <QGridLayout>
-#include <QLineEdit>
 #include <QTextEdit>
 #include <QPushButton>
 
 namespace ptzs {
 
-class InfoEditor : public QWidget
+class AnnouncementEditor : public QWidget
 {
     Q_OBJECT
 public:
-    explicit InfoEditor(QWidget *parent = nullptr);
+    explicit AnnouncementEditor(QWidget *parent = nullptr);
 
 private:
     QGridLayout* layout;
-    QLineEdit *le1,*le2,*le3,*le4;
-    QTextEdit *te1,*te2;
+    QTextEdit *te;
     QPushButton *button;
 
 signals:
@@ -28,4 +26,4 @@ public slots:
 
 } // namespace ptzs
 
-#endif // INFOEDITOR_H
+#endif // ANNOUNSEMENTEDITOR_H

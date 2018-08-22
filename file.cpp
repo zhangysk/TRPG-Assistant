@@ -1,8 +1,8 @@
-#include "scene.h"
+#include "file.h"
 
 namespace ptzs {
 
-Scene::Scene()
+Script* File::loadScript()
 {
 
 }

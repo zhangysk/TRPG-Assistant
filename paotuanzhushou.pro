@@ -29,19 +29,44 @@ SOURCES += \
     tabwidget.cpp \
     editarea.cpp \
     treewidget.cpp \
-    scene.cpp \
-    npc.cpp \
-    npceditor.cpp \
-    infoeditor.cpp
+    summaryeditor.cpp \
+    announcementeditor.cpp \
+    mapeditor.cpp \
+    npc_normal_editor.cpp \
+    scene_battle_editor.cpp \
+    npc_battle_editor.cpp \
+    scene_normal_editor.cpp \
+    map.cpp \
+    script.cpp \
+    file.cpp \
+    npc_battle.cpp \
+    npc_nomal.cpp \
+    scene_battle.cpp \
+    scene_normal.cpp
 
 HEADERS += \
     mainwindow.h \
     tabwidget.h \
     editarea.h \
     treewidget.h \
-    scene.h \
-    npc.h \
-    npceditor.h \
-    infoeditor.h
+    summaryeditor.h \
+    announcementeditor.h \
+    mapeditor.h \
+    npc_normal_editor.h \
+    scene_battle_editor.h \
+    npc_battle_editor.h \
+    scene_normal_editor.h \
+    map.h \
+    script.h \
+    file.h \
+    npc_battle.h \
+    npc_nomal.h \
+    scene_battle.h \
+    scene_normal.h
 
 FORMS +=
+
+DISTFILES +=
+
+RESOURCES += \
+    rc.qrc
