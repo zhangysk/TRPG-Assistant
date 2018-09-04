@@ -27,6 +27,7 @@ namespace ptzs {
         NPC_normal_editor *NNEditor;
         scene_battle_editor *SBEditor;
         scene_normal_editor *SNEditor;
+        Script *script;
     signals:
 
     public slots:

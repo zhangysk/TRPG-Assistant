@@ -16,6 +16,7 @@ EditArea::EditArea(QWidget *parent) : QSplitter(parent)
     NNEditor=new NPC_normal_editor(parent);
     SBEditor=new scene_battle_editor(parent);
     SNEditor=new scene_normal_editor(parent);
+    script=new Script;
     setChildrenCollapsible(false);
     connect(tree,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(onItemDoubleClicked(QTreeWidgetItem*,int)));
 }
@@ -35,6 +36,7 @@ void EditArea::onItemDoubleClicked(QTreeWidgetItem *item, int column)
     else if(!(tree->map_list->isEmpty())&&tree->map_list->contains(item))
     {
         replaceWidget(1,MEditor);
+        MEditor->selectMap(script->getMap(tree->map_list->indexOf(item)));
     }
     else if(item==tree->map_add)
     {

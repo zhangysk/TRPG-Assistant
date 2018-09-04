@@ -11,7 +11,7 @@
 #include <QPixmap>
 #include <QFileDialog>
 #include "clickablelabel.h"
-#include "map.h"
+#include "script.h"
 
 namespace ptzs {
 
@@ -20,17 +20,17 @@ class MapEditor : public QWidget
     Q_OBJECT
 public:
     explicit MapEditor(QWidget *parent = nullptr);
-    void selectMap(int index);
+    void selectMap(Map *map);
+    void setPixmap(const QPixmap &pic);
 
 private:
     int index;
-    Map *map;
     QLineEdit *le;
     QTextEdit *te;
     ClickableLabel *label;
     QVBoxLayout *layout;
     QPushButton *button;
-    QPixmap *pixmap,*imgToShow;
+    QPixmap pixmap,imgToShow;
     void resizeEvent(QResizeEvent *size);
 
 signals:
