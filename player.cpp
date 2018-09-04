@@ -4,6 +4,11 @@ namespace ptzs {
 
 Player::Player()
 {
+    autoGenerate();
+}
+
+void Player::autoGenerate()
+{
 
 }
 

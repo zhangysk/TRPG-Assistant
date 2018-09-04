@@ -16,7 +16,7 @@ class Script
 {
 public:
     Script();
-    Script(QFile* fileName);
+    Script(QString* fileName);
     QString* loadSummary();
     QString* loadAnnouncement();
     QList<Map*>* loadMaps();

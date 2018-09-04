@@ -1,13 +1,21 @@
 #ifndef CLICKABLELABEL_H
 #define CLICKABLELABEL_H
-
+#include <QLabel>
+#include <QMouseEvent>
 
 namespace ptzs {
 
 class ClickableLabel : public QLabel
 {
-public:
-    ClickableLabel();
+
+    Q_OBJECT
+
+signals:
+    void clicked();
+
+protected:
+    void mousePressEvent(QMouseEvent *e);
+
 };
 
 } // namespace ptzs

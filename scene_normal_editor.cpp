@@ -2,7 +2,7 @@
 
 namespace ptzs {
 
-scene_normal_editor::scene_normal_editor(QWidget *parent) : QWidget(parent)
+scene_normal_editor::scene_normal_editor(QWidget *parent) : QScrollArea(parent)
 {
 
 }

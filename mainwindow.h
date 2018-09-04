@@ -7,8 +7,6 @@
 #include <QDebug>
 #include "announcementeditor.h"
 #include "editarea.h"
-#include "npc.h"
-#include "scene.h"
 #include "summaryeditor.h"
 #include "tabwidget.h"
 #include "treewidget.h"

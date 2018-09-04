@@ -1,11 +1,11 @@
 #ifndef SCENE_NORMAL_EDITOR_H
 #define SCENE_NORMAL_EDITOR_H
 
-#include <QWidget>
+#include <QScrollArea>
 
 namespace ptzs {
 
-class scene_normal_editor : public QWidget
+class scene_normal_editor : public QScrollArea
 {
     Q_OBJECT
 public:

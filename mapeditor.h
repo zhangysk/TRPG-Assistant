@@ -5,11 +5,12 @@
 #include <QList>
 #include <QVBoxLayout>
 #include <QLineEdit>
-#include <QLabel>
 #include <QTextEdit>
 #include <QResizeEvent>
 #include <QPushButton>
 #include <QPixmap>
+#include <QFileDialog>
+#include "clickablelabel.h"
 #include "map.h"
 
 namespace ptzs {
@@ -19,13 +20,14 @@ class MapEditor : public QWidget
     Q_OBJECT
 public:
     explicit MapEditor(QWidget *parent = nullptr);
+    void selectMap(int index);
 
 private:
     int index;
     Map *map;
     QLineEdit *le;
     QTextEdit *te;
-    QLabel *label;
+    ClickableLabel *label;
     QVBoxLayout *layout;
     QPushButton *button;
     QPixmap *pixmap,*imgToShow;
@@ -34,6 +36,7 @@ private:
 signals:
 
 public slots:
+    bool selectMapFile();
 };
 
 } // namespace ptzs

@@ -38,11 +38,13 @@ SOURCES += \
     scene_normal_editor.cpp \
     map.cpp \
     script.cpp \
-    file.cpp \
     npc_battle.cpp \
     npc_nomal.cpp \
     scene_battle.cpp \
-    scene_normal.cpp
+    scene_normal.cpp \
+    scenepicshower.cpp \
+    player.cpp \
+    clickablelabel.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -58,11 +60,13 @@ HEADERS += \
     scene_normal_editor.h \
     map.h \
     script.h \
-    file.h \
     npc_battle.h \
     npc_nomal.h \
     scene_battle.h \
-    scene_normal.h
+    scene_normal.h \
+    scenepicshower.h \
+    player.h \
+    clickablelabel.h
 
 FORMS +=
 
