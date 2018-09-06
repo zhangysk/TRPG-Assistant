@@ -1,13 +1,13 @@
-#ifndef NPC_BATTLE_H
-#define NPC_BATTLE_H
+#ifndef KEYNPC_H
+#define KEYNPC_H
 
 #include <cstdlib>
 #include <ctime>
-#include "npc_nomal.h"
+#include "normalnpc.h"
 
 namespace ptzs {
 
-class NPC_battle : public NPC_nomal
+class KeyNpc : public NormalNpc
 {
 public:
     enum ejob
@@ -601,4 +601,4 @@ private:
 
 } // namespace ptzs
 
-#endif // NPC_BATTLE_H
+#endif // KEYNPC_H

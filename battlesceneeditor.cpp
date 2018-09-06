@@ -1,8 +1,8 @@
-#include "scene_battle_editor.h"
+#include "battlesceneeditor.h"
 
 namespace ptzs {
 
-scene_battle_editor::scene_battle_editor(QWidget *parent) : QScrollArea(parent)
+BattleSceneEditor::BattleSceneEditor(QWidget *parent) : QScrollArea(parent)
 {
     setMinimumWidth(250);
     setBackgroundRole(QPalette::Light);
@@ -10,7 +10,7 @@ scene_battle_editor::scene_battle_editor(QWidget *parent) : QScrollArea(parent)
     lay=new QGridLayout(this);
     lay->addWidget(widget,1,1);
     widget->setBackgroundRole(QPalette::Dark);
-    scene=new scene_battle;
+    scene=new BattleScene;
     picShowers=new QList<ScenePicShower*>;
 
     musicShower=new QTableWidget(1,4,widget);
@@ -36,7 +36,7 @@ scene_battle_editor::scene_battle_editor(QWidget *parent) : QScrollArea(parent)
     layout->addWidget(addMusic,2,0);
 }
 
-void scene_battle_editor::resizeEvent(QResizeEvent *e)
+void BattleSceneEditor::resizeEvent(QResizeEvent *e)
 {
     int column=width()/200;
     delete layout;

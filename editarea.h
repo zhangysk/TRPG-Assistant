@@ -1,38 +1,50 @@
 #ifndef EDITAREA_H
 #define EDITAREA_H
 
-#include <QSplitter>
+#include <QWidget>
 #include "treewidget.h"
 #include "summaryeditor.h"
 #include "announcementeditor.h"
 #include "mapeditor.h"
-#include "npc_battle_editor.h"
-#include "npc_normal_editor.h"
-#include "scene_battle_editor.h"
-#include "scene_normal_editor.h"
+#include "keynpceditor.h"
+#include "normalnpceditor.h"
+#include "battlesceneeditor.h"
+#include "normalsceneeditor.h"
 
 namespace ptzs {
-    class EditArea : public QSplitter
+    class EditArea : public QFrame
     {
         Q_OBJECT
     public:
         explicit EditArea(QWidget *parent = nullptr);
+        enum state
+        {
+            File,
+            Info,
+            Npc,
+            Scene,
+        };
 
     private:
-        TreeWidget* tree;
-        SummaryEditor *SEditor;
-        AnnouncementEditor *AEditor;
-        MapEditor *MEditor;
-        NPC_battle_editor *NBEditor;
-        NPC_normal_editor *NNEditor;
-        scene_battle_editor *SBEditor;
-        scene_normal_editor *SNEditor;
-        Script *script;
+        ClickableLabel *file,*info,*npc,*scene;
+        ClickableLabel *background;
+        state st;
+        SummaryEditor *summaryEditor;
+        AnnouncementEditor *announcementEditor;
+        MapEditor *mapEditor;
+        NormalNpcEditor *normalNpcEditor;
+        KeyNpcEditor *keyNpcEditor;
+        NormalSceneEditor *normalSceneEditor;
+        BattleSceneEditor *battleSceneEditor;
+
+    protected:
+        void resizeEvent(QResizeEvent *ev);
+
     signals:
 
     public slots:
-        void onItemDoubleClicked(QTreeWidgetItem* item,int column);
-};
+        void changeState(ClickableLabel *p);
+    };
 
 }
 

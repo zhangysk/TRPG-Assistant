@@ -10,12 +10,22 @@ class ClickableLabel : public QLabel
 
     Q_OBJECT
 
-signals:
-    void clicked();
+public:
+    explicit ClickableLabel(QWidget *parent = nullptr);
+    void setChange(bool _){change=_;}
+
+private:
+    bool change;
+    QPixmap rawPic;
+    bool scaled;
 
 protected:
-    void mousePressEvent(QMouseEvent *e);
+    void mouseReleaseEvent(QMouseEvent *e);
+    void enterEvent(QEvent *e);
+    void leaveEvent(QEvent *e);
 
+signals:
+    void clicked(ClickableLabel *self);
 };
 
 } // namespace ptzs

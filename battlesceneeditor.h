@@ -1,5 +1,5 @@
-#ifndef SCENE_BATTLE_EDITOR_H
-#define SCENE_BATTLE_EDITOR_H
+#ifndef BATTLESCENEEDITOR_H
+#define BATTLESCENEEDITOR_H
 
 #include <QScrollArea>
 #include <QList>
@@ -13,20 +13,20 @@
 #include <QResizeEvent>
 #include <QTableWidget>
 #include <QHeaderView>
-#include "scene_battle.h"
+#include "battlescene.h"
 #include "scenepicshower.h"
 
 namespace ptzs {
 
-class scene_battle_editor : public QScrollArea
+class BattleSceneEditor : public QScrollArea
 {
     Q_OBJECT
 public:
-    explicit scene_battle_editor(QWidget *parent = nullptr);
-    scene_battle_editor(scene_battle *scene);
+    explicit BattleSceneEditor(QWidget *parent = nullptr);
+    BattleSceneEditor(BattleScene *scene);
 
 private:
-    scene_battle *scene;
+    BattleScene *scene;
     QGridLayout *layout,*lay;
     QList<ScenePicShower*> *picShowers;
     QTableWidget *musicShower;
@@ -41,4 +41,4 @@ public slots:
 
 } // namespace ptzs
 
-#endif // SCENE_BATTLE_EDITOR_H
+#endif // BATTLESCENEEDITOR_H

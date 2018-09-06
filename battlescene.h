@@ -1,14 +1,14 @@
-#ifndef SCENE_BATTLE_H
-#define SCENE_BATTLE_H
+#ifndef BATTLESCENE_H
+#define BATTLESCENE_H
 
 #include <QStringList>
 
 namespace ptzs {
 
-class scene_battle
+class BattleScene
 {
 public:
-    scene_battle();
+    BattleScene();
 
 private:
     QStringList *pics;
@@ -23,4 +23,4 @@ public:
 
 } // namespace ptzs
 
-#endif // SCENE_BATTLE_H
+#endif // BATTLESCENE_H

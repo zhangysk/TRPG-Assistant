@@ -1,12 +1,12 @@
-#ifndef NPC_NOMAL_H
-#define NPC_NOMAL_H
+#ifndef NORMALNPC_H
+#define NORMALNPC_H
 
 #include <QString>
 
 
 namespace ptzs {
 
-class NPC_nomal
+class NormalNpc
 {
 public:
     enum esex
@@ -14,8 +14,8 @@ public:
         male,
         female
     };
-    NPC_nomal();
-    NPC_nomal(QString &n,QString &i);
+    NormalNpc();
+    NormalNpc(QString &n,QString &i);
     QString getName(){return name;}
     QString getInfo(){return info;}
     int getAge(){return age;}
@@ -34,4 +34,4 @@ private:
 
 } // namespace ptzs
 
-#endif // NPC_NOMAL_H
+#endif // NORMALNPC_H

@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = paotuanzhushou
+TARGET = paotuanzhushoushou
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -32,19 +32,19 @@ SOURCES += \
     summaryeditor.cpp \
     announcementeditor.cpp \
     mapeditor.cpp \
-    npc_normal_editor.cpp \
-    scene_battle_editor.cpp \
-    npc_battle_editor.cpp \
-    scene_normal_editor.cpp \
     map.cpp \
     script.cpp \
-    npc_battle.cpp \
-    npc_nomal.cpp \
-    scene_battle.cpp \
-    scene_normal.cpp \
     scenepicshower.cpp \
     player.cpp \
-    clickablelabel.cpp
+    clickablelabel.cpp \
+    normalnpceditor.cpp \
+    keynpceditor.cpp \
+    keynpc.cpp \
+    normalnpc.cpp \
+    battlescene.cpp \
+    battlesceneeditor.cpp \
+    normalscene.cpp \
+    normalsceneeditor.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -54,19 +54,19 @@ HEADERS += \
     summaryeditor.h \
     announcementeditor.h \
     mapeditor.h \
-    npc_normal_editor.h \
-    scene_battle_editor.h \
-    npc_battle_editor.h \
-    scene_normal_editor.h \
     map.h \
     script.h \
-    npc_battle.h \
-    npc_nomal.h \
-    scene_battle.h \
-    scene_normal.h \
     scenepicshower.h \
     player.h \
-    clickablelabel.h
+    clickablelabel.h \
+    normalnpceditor.h \
+    keynpceditor.h \
+    keynpc.h \
+    normalnpc.h \
+    battlescene.h \
+    battlesceneeditor.h \
+    normalscene.h \
+    normalsceneeditor.h
 
 FORMS +=
 

@@ -1,8 +1,8 @@
-#include "scene_battle.h"
+#include "battlescene.h"
 
 namespace ptzs {
 
-scene_battle::scene_battle()
+BattleScene::BattleScene()
 {
     pics=new QStringList;
     picinfo=new QStringList;

@@ -4,6 +4,7 @@ namespace ptzs {
 
 MapEditor::MapEditor(QWidget *parent) : QWidget(parent)
 {
+    map=nullptr;
     le=new QLineEdit(QString("输入名称"));
     le->setAlignment(Qt::AlignHCenter);
     te=new QTextEdit("地图信息");
@@ -11,29 +12,34 @@ MapEditor::MapEditor(QWidget *parent) : QWidget(parent)
     label=new ClickableLabel;
     label->setMinimumSize(200,200);
     pixmap.load(":/map.png");
-    imgToShow=pixmap.scaled(size(),Qt::KeepAspectRatio);
-    label->setPixmap(imgToShow);
+    label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
     label->setAlignment(Qt::AlignCenter);
     layout=new QVBoxLayout(this);
-    button=new QPushButton("提交更改",this);
     layout->addWidget(le);
     layout->addWidget(label,Qt::AlignCenter);
     layout->addWidget(te);
-    layout->addWidget(button,0,Qt::AlignRight);
     connect(label,SIGNAL(clicked()),this,SLOT(selectMapFile()));
+    connect(le,SIGNAL(editingFinished()),this,SLOT(setMapName()));
+    connect(te,SIGNAL(textChanged()),this,SLOT(setMapInfo()));
 }
 
-void MapEditor::selectMap(Map *map)
+void MapEditor::selectMap(Map *m,int i)
 {
+    map=m;
     le->setText(map->getName());
     setPixmap(QPixmap(map->getPicFile()));
     te->setText(map->getIntroduction());
 }
 
+void MapEditor::setPixmap(const QPixmap &pic)
+{
+    pixmap=pic;
+    label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
+}
+
 void MapEditor::resizeEvent(QResizeEvent*)
 {
-    imgToShow=pixmap.scaled(label->size(),Qt::KeepAspectRatio);
-    label->setPixmap(imgToShow);
+    label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
 }
 
 bool MapEditor::selectMapFile()
@@ -52,20 +58,22 @@ bool MapEditor::selectMapFile()
     }
     if(fileName.size())
     {
-        pixmap.load(fileName.first());
-        imgToShow=pixmap.scaled(label->size(),Qt::KeepAspectRatio);
-        label->setPixmap(imgToShow);
+        setPixmap(QPixmap(fileName.first()));
+        map->setPicFile(fileName.first());
         return true;
     }
     else
         return false;
 }
 
-void MapEditor::setPixmap(const QPixmap &pic)
+void MapEditor::setMapName()
 {
-    pixmap=pic;
-    imgToShow=pixmap.scaled(label->size(),Qt::KeepAspectRatio);
-    label->setPixmap(imgToShow);
+    map->setName(le->text());
+}
+
+void MapEditor::setMapInfo()
+{
+    map->setIntroduction(te->toPlainText());
 }
 
 } // namespace ptzs

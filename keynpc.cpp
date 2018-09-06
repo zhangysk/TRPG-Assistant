@@ -1,8 +1,8 @@
-#include "npc_battle.h"
+#include "keynpc.h"
 
 namespace ptzs {
 
-int NPC_battle::dice(int n, int max)
+int KeyNpc::dice(int n, int max)
 {
     int r=0;
     for(int i=0;i<n;i++)
@@ -10,7 +10,7 @@ int NPC_battle::dice(int n, int max)
     return r;
 }
 
-void NPC_battle::autoGenerate()
+void KeyNpc::autoGenerate()
 {
     property[liLiang]=dice(3,6);
     property[tiZhi]=dice(3,6);

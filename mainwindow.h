@@ -1,35 +1,31 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QMenuBar>
-#include <QToolBar>
-#include <QDebug>
-#include "announcementeditor.h"
+#include <QWidget>
+#include <QPainter>
+#include "clickablelabel.h"
 #include "editarea.h"
-#include "summaryeditor.h"
-#include "tabwidget.h"
-#include "treewidget.h"
 
 namespace ptzs{
-    class MainWindow : public QMainWindow
+    class MainWindow : public QWidget
     {
         Q_OBJECT
     public:
         explicit MainWindow(QWidget *parent = nullptr);
 
+    protected:
+        void resizeEvent(QResizeEvent *ev);
+        void paintEvent(QPaintEvent *ev);
+
     private:
-        TabWidget* tabWidget;
-        QMenu* file;
-        QMenu* edit;
-        QMenu* help;
-        QAction* openAction;
-        QAction* newAction;
-        QAction* saveAction;
+        ClickableLabel *close,*minimize,*maximize;
+        EditArea *editArea;
+        QGridLayout *layout;
 
     signals:
 
     public slots:
+        void maximizing();
     };
 }
 

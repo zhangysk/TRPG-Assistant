@@ -20,23 +20,27 @@ class MapEditor : public QWidget
     Q_OBJECT
 public:
     explicit MapEditor(QWidget *parent = nullptr);
-    void selectMap(Map *map);
+    void selectMap(Map *map,int i);
     void setPixmap(const QPixmap &pic);
 
 private:
-    int index;
+    Map *map;
     QLineEdit *le;
     QTextEdit *te;
     ClickableLabel *label;
     QVBoxLayout *layout;
-    QPushButton *button;
-    QPixmap pixmap,imgToShow;
+    QPixmap pixmap;
+
+protected:
     void resizeEvent(QResizeEvent *size);
 
 signals:
 
 public slots:
     bool selectMapFile();
+    void setMapName();
+    void setMapInfo();
+
 };
 
 } // namespace ptzs

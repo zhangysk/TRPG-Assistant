@@ -2,10 +2,29 @@
 
 namespace ptzs {
 
-void ClickableLabel::mousePressEvent(QMouseEvent *e)
+ClickableLabel::ClickableLabel(QWidget *parent) : QLabel(parent)
 {
-    if(e->button()==Qt::RightButton)
-        emit clicked();
+    setCursor(QCursor(Qt::PointingHandCursor));
+    change=false;
+    scaled=false;
 }
+
+
+void ClickableLabel::mouseReleaseEvent(QMouseEvent *e)
+{
+    if(e->button()==Qt::LeftButton&&underMouse())
+        emit clicked(this);
+}
+
+void ClickableLabel::enterEvent(QEvent *e)
+{
+
+}
+
+void ClickableLabel::leaveEvent(QEvent *e)
+{
+
+}
+
 
 } // namespace ptzs

@@ -3,79 +3,121 @@
 
 using namespace ptzs;
 
-EditArea::EditArea(QWidget *parent) : QSplitter(parent)
+EditArea::EditArea(QWidget *parent) : QFrame(parent)
 {
-    tree=new TreeWidget(this);
-    tree->setMinimumWidth(100);
-    tree->setMaximumWidth(300);
-    SEditor=new SummaryEditor(parent);
-    addWidget(SEditor);
-    AEditor=new AnnouncementEditor(parent);
-    MEditor=new MapEditor(parent);
-    NBEditor=new NPC_battle_editor(parent);
-    NNEditor=new NPC_normal_editor(parent);
-    SBEditor=new scene_battle_editor(parent);
-    SNEditor=new scene_normal_editor(parent);
-    script=new Script;
-    setChildrenCollapsible(false);
-    connect(tree,SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)),this,SLOT(onItemDoubleClicked(QTreeWidgetItem*,int)));
+    setMinimumSize(985,608);
+
+    background=new ClickableLabel(this);
+    info=new ClickableLabel(this);
+    npc=new ClickableLabel(this);
+    scene=new ClickableLabel(this);
+    file=new ClickableLabel(this);
+    st=File;
+
+    file->setPixmap(QPixmap(":/tag10.png"));
+    info->setPixmap(QPixmap(":/tag21.png"));
+    npc->setPixmap(QPixmap(":/tag31.png"));
+    scene->setPixmap(QPixmap(":/tag41.png"));
+    background->setPixmap(QPixmap(":/background.png"));
+
+    background->setCursor(Qt::ArrowCursor);
+    file->setScaledContents(true);
+    info->setScaledContents(true);
+    npc->setScaledContents(true);
+    scene->setScaledContents(true);
+    background->setScaledContents(true);
+    connect(file,SIGNAL(clicked(ClickableLabel*)),this,SLOT(changeState(ClickableLabel*)));
+    connect(info,SIGNAL(clicked(ClickableLabel*)),this,SLOT(changeState(ClickableLabel*)));
+    connect(npc,SIGNAL(clicked(ClickableLabel*)),this,SLOT(changeState(ClickableLabel*)));
+    connect(scene,SIGNAL(clicked(ClickableLabel*)),this,SLOT(changeState(ClickableLabel*)));
 }
 
-void EditArea::onItemDoubleClicked(QTreeWidgetItem *item, int column)
+void EditArea::resizeEvent(QResizeEvent *ev)
 {
-    if(item==tree->summary)
+    qDebug()<<"asdfa";
+    int x,y,w,h;
+    if((float)width()/height()>1.62)
     {
-        replaceWidget(1,SEditor);
+        qDebug()<<"asdfa";
+        y=0;
+        h=height();
+        w=1.62*height();
+        x=(width()-w)/2;
     }
+    else
+    {
+        qDebug()<<"asasdaa";
+        x=0;
+        w=width();
+        h=w/1.62;
+        y=(height()-h)/2;
+    }
+    switch(st)
+    {
+    case File:
+        file->setGeometry(x+0.05*w,y+0.09*h,w*0.09,h*0.06);
+        info->setGeometry(x+0.02*w,y+0.18*h,w*0.09,h*0.06);
+        npc->setGeometry(x+0.02*w,y+0.27*h,w*0.09,h*0.06);
+        scene->setGeometry(x+0.02*w,y+0.36*h,w*0.09,h*0.06);
+        break;
+    case Info:
+        file->setGeometry(x+0.02*w,y+0.09*h,w*0.09,h*0.06);
+        info->setGeometry(x+0.05*w,y+0.18*h,w*0.09,h*0.06);
+        npc->setGeometry(x+0.02*w,y+0.27*h,w*0.09,h*0.06);
+        scene->setGeometry(x+0.02*w,y+0.36*h,w*0.09,h*0.06);
+        break;
+    case Npc:
+        file->setGeometry(x+0.02*w,y+0.09*h,w*0.09,h*0.06);
+        info->setGeometry(x+0.02*w,y+0.18*h,w*0.09,h*0.06);
+        npc->setGeometry(x+0.05*w,y+0.27*h,w*0.09,h*0.06);
+        scene->setGeometry(x+0.02*w,y+0.36*h,w*0.09,h*0.06);
+        break;
+    default:
+        file->setGeometry(x+0.02*w,y+0.09*h,w*0.09,h*0.06);
+        info->setGeometry(x+0.02*w,y+0.18*h,w*0.09,h*0.06);
+        npc->setGeometry(x+0.02*w,y+0.27*h,w*0.09,h*0.06);
+        scene->setGeometry(x+0.05*w,y+0.36*h,w*0.09,h*0.06);
+        break;
+    }
+    background->setGeometry(x+0.05*w,y,0.95*w,h);
+}
 
-    else if(item==tree->announcement)
+void EditArea::changeState(ClickableLabel *p)
+{
+    if(p==file&&st!=File)
     {
-        replaceWidget(1,AEditor);
+        st=File;
+        file->setPixmap(QPixmap(":/tag10.png"));
+        info->setPixmap(QPixmap(":/tag21.png"));
+        npc->setPixmap(QPixmap(":/tag31.png"));
+        scene->setPixmap(QPixmap(":/tag41.png"));
+        resizeEvent(nullptr);
     }
-
-    else if(!(tree->map_list->isEmpty())&&tree->map_list->contains(item))
+    else if(p==info&&st!=Info)
     {
-        replaceWidget(1,MEditor);
-        MEditor->selectMap(script->getMap(tree->map_list->indexOf(item)));
+        st=Info;
+        file->setPixmap(QPixmap(":/tag11.png"));
+        info->setPixmap(QPixmap(":/tag20.png"));
+        npc->setPixmap(QPixmap(":/tag31.png"));
+        scene->setPixmap(QPixmap(":/tag41.png"));
+        resizeEvent(nullptr);
     }
-    else if(item==tree->map_add)
+    else if(p==npc&&st!=Npc)
     {
-        tree->addMap();
+        st=Npc;
+        file->setPixmap(QPixmap(":/tag11.png"));
+        info->setPixmap(QPixmap(":/tag21.png"));
+        npc->setPixmap(QPixmap(":/tag30.png"));
+        scene->setPixmap(QPixmap(":/tag41.png"));
+        resizeEvent(nullptr);
     }
-
-    else if(!(tree->NPC_battle_list->isEmpty())&&tree->NPC_battle_list->contains(item))
+    else if(p==scene&&st!=Scene)
     {
-        replaceWidget(1,NBEditor);
-    }
-    else if(item==tree->NPC_battle_add)
-    {
-        tree->addNPCBattle();
-    }
-
-    else if(!(tree->NPC_normal_list->isEmpty())&&tree->NPC_normal_list->contains(item))
-    {
-        replaceWidget(1,NNEditor);
-    }
-    else if(item==tree->NPC_normal_add)
-    {
-        tree->addNPCNormal();
-    }
-
-    else if(!(tree->scene_battle_list->isEmpty())&&tree->scene_battle_list->contains(item))
-    {
-        replaceWidget(1,SBEditor);
-    }
-    else if(item==tree->scene_battle_add)
-    {
-        tree->addSceneBattle();
-    }
-
-    else if(!(tree->scene_normal_list->isEmpty())&&tree->scene_normal_list->contains(item))
-    {
-        replaceWidget(1,SNEditor);
-    }
-    else if(item==tree->scene_normal_add)
-    {
-        tree->addSceneNormal();
+        st=Scene;
+        file->setPixmap(QPixmap(":/tag11.png"));
+        info->setPixmap(QPixmap(":/tag21.png"));
+        npc->setPixmap(QPixmap(":/tag31.png"));
+        scene->setPixmap(QPixmap(":/tag40.png"));
+        resizeEvent(nullptr);
     }
 }
