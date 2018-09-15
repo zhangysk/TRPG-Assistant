@@ -44,7 +44,13 @@ SOURCES += \
     battlescene.cpp \
     battlesceneeditor.cpp \
     normalscene.cpp \
-    normalsceneeditor.cpp
+    normalsceneeditor.cpp \
+    filewidget.cpp \
+    infowidget.cpp \
+    npcwidget.cpp \
+    scenewidget.cpp \
+    border.cpp \
+    multipledisplayer.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -66,7 +72,13 @@ HEADERS += \
     battlescene.h \
     battlesceneeditor.h \
     normalscene.h \
-    normalsceneeditor.h
+    normalsceneeditor.h \
+    filewidget.h \
+    infowidget.h \
+    npcwidget.h \
+    scenewidget.h \
+    border.h \
+    multipledisplayer.h
 
 FORMS +=
 

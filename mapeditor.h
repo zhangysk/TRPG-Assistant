@@ -2,16 +2,13 @@
 #define MAPEDITOR_H
 
 #include <QWidget>
-#include <QList>
-#include <QVBoxLayout>
 #include <QLineEdit>
 #include <QTextEdit>
-#include <QResizeEvent>
-#include <QPushButton>
-#include <QPixmap>
+#include <QVBoxLayout>
 #include <QFileDialog>
 #include "clickablelabel.h"
-#include "script.h"
+#include "map.h"
+
 
 namespace ptzs {
 

@@ -27,7 +27,7 @@ BattleSceneEditor::BattleSceneEditor(QWidget *parent) : QScrollArea(parent)
     addPic->setScaledContents(true);
     addPic->setMinimumSize(200,300);
     addPic->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
-    addPic->setPixmap(QPixmap(":/map.png"));
+    addPic->setPixmap(QPixmap(":png/map.png"));
     addMusic=new QPushButton(widget);
     layout=new QGridLayout(widget);
     widget->setLayout(layout);

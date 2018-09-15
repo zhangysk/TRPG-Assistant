@@ -1,7 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <cstdlib>
 #include <QString>
 
 namespace ptzs {

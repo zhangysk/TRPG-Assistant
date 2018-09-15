@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QTextEdit>
-#include <QPushButton>
+#include <QFontDatabase>
 
 namespace ptzs {
 
@@ -15,9 +15,8 @@ public:
     explicit AnnouncementEditor(QWidget *parent = nullptr);
 
 private:
-    QGridLayout* layout;
+    QGridLayout *layout;
     QTextEdit *te;
-    QPushButton *button;
 
 signals:
 

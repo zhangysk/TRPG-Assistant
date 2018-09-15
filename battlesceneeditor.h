@@ -2,16 +2,11 @@
 #define BATTLESCENEEDITOR_H
 
 #include <QScrollArea>
-#include <QList>
-#include <QLabel>
-#include <QLineEdit>
 #include <QGridLayout>
-#include <QScrollArea>
-#include <QLabel>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QResizeEvent>
+#include <QList>
 #include <QTableWidget>
+#include <QLabel>
+#include <QPushButton>
 #include <QHeaderView>
 #include "battlescene.h"
 #include "scenepicshower.h"

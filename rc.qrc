@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/png">
         <file>map.png</file>
         <file>background.png</file>
         <file>armstrong_1.png</file>
@@ -12,5 +12,20 @@
         <file>tag20.png</file>
         <file>tag11.png</file>
         <file>tag10.png</file>
+        <file>newfile.png</file>
+        <file>openfile.png</file>
+        <file>out.png</file>
+        <file>announcement.png</file>
+        <file>summary.png</file>
+        <file>submit.png</file>
+        <file>last.png</file>
+        <file>next.png</file>
+        <file>add.png</file>
+        <file>normalnpc.png</file>
+        <file>keynpc.png</file>
     </qresource>
+    <qresource prefix="/font">
+        <file>HYZhuZiHeiMoFaW.ttf</file>
+    </qresource>
+    <qresource prefix="/"/>
 </RCC>

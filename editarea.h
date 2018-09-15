@@ -1,15 +1,17 @@
 #ifndef EDITAREA_H
 #define EDITAREA_H
 
-#include <QWidget>
-#include "treewidget.h"
+#include <QFrame>
+#include <QStackedWidget>
+#include <QFileDialog>
+#include "clickablelabel.h"
+#include "filewidget.h"
+#include "infowidget.h"
+#include "npcwidget.h"
+#include "scenewidget.h"
 #include "summaryeditor.h"
 #include "announcementeditor.h"
-#include "mapeditor.h"
-#include "keynpceditor.h"
-#include "normalnpceditor.h"
-#include "battlesceneeditor.h"
-#include "normalsceneeditor.h"
+#include "multipledisplayer.h"
 
 namespace ptzs {
     class EditArea : public QFrame
@@ -24,18 +26,27 @@ namespace ptzs {
             Npc,
             Scene,
         };
+        enum widgetType
+        {
+            FILEWIDGET,
+            INFOWIDGET,
+            NPCWIDGET,
+            SCENEWIDGET,
+            SUMMARYWIDGET,
+            ANNOUNCEMENTWIDGET,
+            MAPEDITOR,
+            NORMALNPCEDITOR,
+            KEYNPCEDITOR,
+            NORMALSCENEEDITOR,
+            BATTLESCENEEDITOR,
+        };
 
     private:
         ClickableLabel *file,*info,*npc,*scene;
         ClickableLabel *background;
+        QLabel *frame;
         state st;
-        SummaryEditor *summaryEditor;
-        AnnouncementEditor *announcementEditor;
-        MapEditor *mapEditor;
-        NormalNpcEditor *normalNpcEditor;
-        KeyNpcEditor *keyNpcEditor;
-        NormalSceneEditor *normalSceneEditor;
-        BattleSceneEditor *battleSceneEditor;
+        QStackedWidget *widget;
 
     protected:
         void resizeEvent(QResizeEvent *ev);
@@ -44,6 +55,16 @@ namespace ptzs {
 
     public slots:
         void changeState(ClickableLabel *p);
+        void openFile();
+        void newFile();
+        void summary();
+        void announcement();
+        void map();
+        void normalNpc();
+        void keyNpc();
+        void normalScene();
+        void battleScene();
+
     };
 
 }

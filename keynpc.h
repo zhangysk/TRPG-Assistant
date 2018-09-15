@@ -1,9 +1,8 @@
 #ifndef KEYNPC_H
 #define KEYNPC_H
 
-#include <cstdlib>
-#include <ctime>
 #include "normalnpc.h"
+#include <QString>
 
 namespace ptzs {
 

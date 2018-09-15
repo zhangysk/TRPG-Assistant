@@ -4,37 +4,23 @@ namespace ptzs {
 
 MapEditor::MapEditor(QWidget *parent) : QWidget(parent)
 {
-    map=nullptr;
-    le=new QLineEdit(QString("输入名称"));
+    map=new Map;
+    le=new QLineEdit(QString("输入名称"),this);
     le->setAlignment(Qt::AlignHCenter);
     te=new QTextEdit("地图信息");
     te->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Maximum);
     label=new ClickableLabel;
     label->setMinimumSize(200,200);
-    pixmap.load(":/map.png");
+    pixmap.load(":png/map.png");
     label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
     label->setAlignment(Qt::AlignCenter);
     layout=new QVBoxLayout(this);
     layout->addWidget(le);
     layout->addWidget(label,Qt::AlignCenter);
     layout->addWidget(te);
-    connect(label,SIGNAL(clicked()),this,SLOT(selectMapFile()));
+    connect(label,SIGNAL(clicked(ClickableLabel*)),this,SLOT(selectMapFile()));
     connect(le,SIGNAL(editingFinished()),this,SLOT(setMapName()));
     connect(te,SIGNAL(textChanged()),this,SLOT(setMapInfo()));
-}
-
-void MapEditor::selectMap(Map *m,int i)
-{
-    map=m;
-    le->setText(map->getName());
-    setPixmap(QPixmap(map->getPicFile()));
-    te->setText(map->getIntroduction());
-}
-
-void MapEditor::setPixmap(const QPixmap &pic)
-{
-    pixmap=pic;
-    label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
 }
 
 void MapEditor::resizeEvent(QResizeEvent*)
@@ -58,7 +44,8 @@ bool MapEditor::selectMapFile()
     }
     if(fileName.size())
     {
-        setPixmap(QPixmap(fileName.first()));
+        pixmap=QPixmap(fileName.first());
+        label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
         map->setPicFile(fileName.first());
         return true;
     }

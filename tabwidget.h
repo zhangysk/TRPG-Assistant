@@ -1,9 +1,7 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <QTabWidget>
-#include <QString>
-#include <QList>
+#include <QTableWidget>
 #include "editarea.h"
 
 namespace ptzs {

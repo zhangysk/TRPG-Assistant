@@ -3,7 +3,6 @@
 
 #include <QString>
 
-
 namespace ptzs {
 
 class NormalNpc

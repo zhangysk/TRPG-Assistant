@@ -7,10 +7,13 @@ SummaryEditor::SummaryEditor(QWidget *parent) : QWidget(parent)
     layout=new QGridLayout(this);
     layout->setMargin(0);
     te=new QTextEdit(this);
-    button=new QPushButton("提交更改",this);
-    layout->addWidget(te,1,1);
-    layout->addWidget(button,2,1,Qt::AlignRight);
-    button->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Minimum);
+    int i=QFontDatabase::addApplicationFont(":/font/HYZhuZiHeiMoFaW.ttf");
+    QString n = QFontDatabase::applicationFontFamilies(i).at(0);
+    QFont font(n);
+    font.setPixelSize(20);
+    te->setFont(font);
+    te->setStyleSheet("background-color:transparent;");
+    layout->addWidget(te,0,0);
 }
 
 } // namespace ptzs

@@ -2,7 +2,6 @@
 #define TREEWIDGET_H
 
 #include <QTreeWidget>
-#include <QList>
 
 namespace ptzs {
     class TreeWidget : public QTreeWidget

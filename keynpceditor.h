@@ -1,7 +1,6 @@
 #ifndef KEYNPCEDITOR_H
 #define KEYNPCEDITOR_H
 
-#include <QLineEdit>
 #include <QTableWidget>
 #include <QHeaderView>
 

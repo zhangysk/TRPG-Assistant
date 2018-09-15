@@ -1,15 +1,11 @@
 #ifndef SCRIPT_H
 #define SCRIPT_H
 
-#include <QList>
 #include <QString>
 #include "map.h"
 #include "keynpc.h"
-#include "normalnpc.h"
 #include "battlescene.h"
 #include "normalscene.h"
-#include <QFile>
-#include <QDebug>
 
 namespace ptzs {
 
