@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QTextEdit>
-#include <QFontDatabase>
+#include "data.h"
 
 namespace ptzs {
 

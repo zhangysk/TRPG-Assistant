@@ -78,7 +78,8 @@ HEADERS += \
     npcwidget.h \
     scenewidget.h \
     border.h \
-    multipledisplayer.h
+    multipledisplayer.h \
+    data.h
 
 FORMS +=
 

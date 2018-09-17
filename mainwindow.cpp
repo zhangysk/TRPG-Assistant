@@ -8,6 +8,11 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     background.load(":png/armstrong_1.png");
     setAutoFillBackground(true);
 
+
+    int i=QFontDatabase::addApplicationFont(":/font/HYZhuZiHeiMoFaW.ttf");
+    QString n = QFontDatabase::applicationFontFamilies(i).at(0);
+    myFont.setPixelSize(20);
+    myFont.setFamily(n);
     palette.setBrush(QPalette::Background,QBrush(background.scaled(size(),Qt::KeepAspectRatioByExpanding)));
     setPalette(palette);
     setStyleSheet(QString::fromUtf8("border:1px solid red"));

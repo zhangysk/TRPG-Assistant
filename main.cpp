@@ -1,6 +1,9 @@
 #include <QApplication>
 #include <QWidget>
 #include "mainwindow.h"
+#include "data.h"
+
+QFont myFont;
 
 int main(int argc, char *argv[])
 {
