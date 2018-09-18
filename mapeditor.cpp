@@ -7,8 +7,12 @@ MapEditor::MapEditor(QWidget *parent) : QWidget(parent)
     map=new Map;
     le=new QLineEdit(QString("输入名称"),this);
     le->setAlignment(Qt::AlignHCenter);
+    le->setFont(myFont);
+    le->setStyleSheet("background-color:transparent;");
     te=new QTextEdit("地图信息");
     te->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Maximum);
+    te->setFont(myFont);
+    te->setStyleSheet("background-color:transparent;");
     label=new ClickableLabel;
     label->setMinimumSize(200,200);
     pixmap.load(":png/map.png");

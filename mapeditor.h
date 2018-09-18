@@ -6,6 +6,7 @@
 #include <QTextEdit>
 #include <QVBoxLayout>
 #include <QFileDialog>
+#include "data.h"
 #include "clickablelabel.h"
 #include "map.h"
 
