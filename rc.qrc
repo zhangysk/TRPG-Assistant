@@ -23,6 +23,8 @@
         <file>add.png</file>
         <file>normalnpc.png</file>
         <file>keynpc.png</file>
+        <file>topborder.png</file>
+        <file>bottomborder.png</file>
     </qresource>
     <qresource prefix="/font">
         <file>HYZhuZiHeiMoFaW.ttf</file>

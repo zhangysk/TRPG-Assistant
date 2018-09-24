@@ -7,13 +7,14 @@
 #include <QComboBox>
 #include <QGridLayout>
 #include <QFileDialog>
+#include <QScrollArea>
 #include "data.h"
 #include "clickablelabel.h"
 #include "normalnpc.h"
 
 namespace ptzs {
 
-class NormalNpcEditor : public QWidget
+class NormalNpcEditor : public QScrollArea
 {
     Q_OBJECT
 public:
@@ -21,6 +22,7 @@ public:
 
 private:
     NormalNpc npc;
+    QWidget *widget;
     QLineEdit *name,*_name;
     QLineEdit *sex;
     QComboBox *_sex;
@@ -29,7 +31,7 @@ private:
     QTextEdit *_info;
     QLineEdit *avatar;
     ClickableLabel *_avatar;
-    QGridLayout *layout;
+    QGridLayout *layout,*_layout;
     QPixmap pixmap;
 
 signals:

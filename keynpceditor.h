@@ -11,7 +11,7 @@
 
 namespace ptzs {
 
-class KeyNpcEditor : public QWidget
+class KeyNpcEditor : public QScrollArea
 {
     Q_OBJECT
 public:
@@ -19,8 +19,11 @@ public:
 
 private:
     QWidget *widget;
-    QScrollArea *scrollArea;
     QGridLayout *layout,*_layout;
+    QLineEdit *tag,*type;
+    QLineEdit *le;
+    QTextEdit *te;
+    ClickableLabel *avatar;
 
 signals:
 
