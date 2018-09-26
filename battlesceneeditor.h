@@ -4,12 +4,10 @@
 #include <QScrollArea>
 #include <QGridLayout>
 #include <QList>
-#include <QTableWidget>
-#include <QLabel>
-#include <QPushButton>
-#include <QHeaderView>
+#include <QLineEdit>
+#include <QTextEdit>
+#include "clickablelabel.h"
 #include "battlescene.h"
-#include "scenepicshower.h"
 
 namespace ptzs {
 
@@ -18,20 +16,25 @@ class BattleSceneEditor : public QScrollArea
     Q_OBJECT
 public:
     explicit BattleSceneEditor(QWidget *parent = nullptr);
-    BattleSceneEditor(BattleScene *scene);
 
 private:
     BattleScene *scene;
-    QGridLayout *layout,*lay;
-    QList<ScenePicShower*> *picShowers;
-    QTableWidget *musicShower;
-    QLabel *addPic;
-    QPushButton *addMusic;
     QWidget *widget;
-    void resizeEvent(QResizeEvent *);
+    QList<ClickableLabel*> scenePics;
+    QList<QTextEdit*> picInfos;
+    ClickableLabel *addPic;
+    QList<QLineEdit*> bgmFiles;
+    QList<ClickableLabel*> playBgm;
+    QList<ClickableLabel*> selectBgmFiles;
+    ClickableLabel *addBgm;
+    QGridLayout *layout,*_layout;
+
 signals:
 
 public slots:
+    void addPicFile();
+    void addBgmFile();
+
 };
 
 } // namespace ptzs

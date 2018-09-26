@@ -25,6 +25,8 @@
         <file>keynpc.png</file>
         <file>topborder.png</file>
         <file>bottomborder.png</file>
+        <file>addpicfile.png</file>
+        <file>addbgmfile.png</file>
     </qresource>
     <qresource prefix="/font">
         <file>HYZhuZiHeiMoFaW.ttf</file>

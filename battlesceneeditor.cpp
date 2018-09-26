@@ -4,52 +4,69 @@ namespace ptzs {
 
 BattleSceneEditor::BattleSceneEditor(QWidget *parent) : QScrollArea(parent)
 {
-    setMinimumWidth(250);
-    setBackgroundRole(QPalette::Light);
-    widget=new QWidget;
-    lay=new QGridLayout(this);
-    lay->addWidget(widget,1,1);
-    widget->setBackgroundRole(QPalette::Dark);
     scene=new BattleScene;
-    picShowers=new QList<ScenePicShower*>;
-
-    musicShower=new QTableWidget(1,4,widget);
-    musicShower->horizontalHeader()->setStretchLastSection(true);;
-    musicShower->setSelectionBehavior(QAbstractItemView::SelectRows);
-    QStringList header;
-    header<<tr("name")<<tr("file location")<<tr("info")<<tr("play");
-    musicShower->setHorizontalHeaderLabels(header);
-    musicShower->setFrameShape(QFrame::NoFrame);
-    musicShower->verticalHeader()->hide();
-    musicShower->horizontalHeader()->resizeSection(3,20);
-
-    addPic=new QLabel(widget);
-    addPic->setScaledContents(true);
-    addPic->setMinimumSize(200,300);
-    addPic->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
-    addPic->setPixmap(QPixmap(":png/map.png"));
-    addMusic=new QPushButton(widget);
+    widget=new QWidget(this);
+    addPic=new ClickableLabel(this);
+    addBgm=new ClickableLabel(this);
+    _layout=new QGridLayout(this);
     layout=new QGridLayout(widget);
-    widget->setLayout(layout);
-    layout->addWidget(addPic,0,0,Qt::AlignCenter);
-    layout->addWidget(musicShower,1,0);
-    layout->addWidget(addMusic,2,0);
+    addPic->setPixmap(QPixmap(":/png/addpicfile.png"));
+    addBgm->setPixmap(QPixmap(":/png/addbgmfile.png"));
+
+    _layout->addWidget(widget);
+    layout->addWidget(addPic,0,0);
+    layout->addWidget(addBgm,1,0);
+    connect(addPic,SIGNAL(clicked(ClickableLabel*)),this,SLOT(addPicFile()));
+    connect(addBgm,SIGNAL(clicked(ClickableLabel*)),this,SLOT(addBgmFile()));
 }
 
-void BattleSceneEditor::resizeEvent(QResizeEvent *e)
+void BattleSceneEditor::addPicFile()
 {
-    int column=width()/200;
     delete layout;
-    layout=new QGridLayout;
-    for(int i=0;i<scene->picNum();i++)
+    layout=new QGridLayout(widget);
+    layout->setColumnStretch(0,5);
+    layout->setColumnStretch(1,1);
+    layout->setColumnStretch(2,4);
+    scenePics.append(new ClickableLabel);
+    picInfos.append(new QTextEdit);
+    for(int i=0;i<scenePics.count();i++)
     {
-        layout->addWidget(picShowers->at(i),i/column,i%column);
+        layout->addWidget(scenePics.at(i),i,0);
+        layout->addWidget(picInfos.at(i),i,1,1,2);
     }
-    layout->addWidget(addPic,(picShowers->size()+1)/column,(picShowers->size()+1)%column,Qt::AlignCenter);
-    layout->addWidget(musicShower,(picShowers->size()+1)/column+1,0,1,column);
-    layout->addWidget(addMusic,(picShowers->size()+1)/column+2,0,1,column,Qt::AlignLeft);
-    layout->setMargin(2);
-    widget->setLayout(layout);
+    layout->addWidget(addPic,scenePics.count(),0,1,3);
+    for(int i=0;i<bgmFiles.count();i++)
+    {
+        layout->addWidget(bgmFiles.at(i),scenePics.count()+1+i,0);
+        layout->addWidget(playBgm.at(i),scenePics.count()+1+i,1);
+        layout->addWidget(selectBgmFiles.at(i),scenePics.count()+1+i,2);
+    }
+    layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,3);
+}
+
+void BattleSceneEditor::addBgmFile()
+{
+    delete layout;
+    layout=new QGridLayout(widget);
+    layout->setColumnStretch(0,5);
+    layout->setColumnStretch(1,1);
+    layout->setColumnStretch(2,4);
+    bgmFiles.append(new QLineEdit);
+    playBgm.append(new ClickableLabel);
+    selectBgmFiles.append(new ClickableLabel);
+    for(int i=0;i<scenePics.count();i++)
+    {
+        layout->addWidget(scenePics.at(i),i,0);
+        layout->addWidget(picInfos.at(i),i,1,1,2);
+    }
+    layout->addWidget(addPic,scenePics.count(),0,1,3);
+    for(int i=0;i<bgmFiles.count();i++)
+    {
+        layout->addWidget(bgmFiles.at(i),scenePics.count()+1+i,0);
+        layout->addWidget(playBgm.at(i),scenePics.count()+1+i,1);
+        layout->addWidget(selectBgmFiles.at(i),scenePics.count()+1+i,2);
+    }
+    layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,3);
 }
 
 } // namespace ptzs
