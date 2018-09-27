@@ -51,7 +51,8 @@ SOURCES += \
     npcwidget.cpp \
     scenewidget.cpp \
     border.cpp \
-    multipledisplayer.cpp
+    multipledisplayer.cpp \
+    filesaver.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -80,7 +81,8 @@ HEADERS += \
     scenewidget.h \
     border.h \
     multipledisplayer.h \
-    data.h
+    data.h \
+    filesaver.h
 
 FORMS +=
 
