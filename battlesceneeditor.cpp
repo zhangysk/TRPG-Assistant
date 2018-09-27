@@ -10,6 +10,12 @@ BattleSceneEditor::BattleSceneEditor(QWidget *parent) : QScrollArea(parent)
     addBgm=new ClickableLabel(this);
     _layout=new QGridLayout(this);
     layout=new QGridLayout(widget);
+
+    setWidget(widget);
+    widget->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::MinimumExpanding);
+    addPic->setMinimumHeight(200);
+    addBgm->setMinimumHeight(20);
+    addBgm->setMaximumHeight(20);
     addPic->setPixmap(QPixmap(":/png/addpicfile.png"));
     addBgm->setPixmap(QPixmap(":/png/addbgmfile.png"));
 
@@ -28,7 +34,10 @@ void BattleSceneEditor::addPicFile()
     layout->setColumnStretch(1,1);
     layout->setColumnStretch(2,4);
     scenePics.append(new ClickableLabel);
+    scenePics.last()->setPixmap(QPixmap(":/png/openfile.png"));
+    scenePics.last()->setMinimumHeight(200);
     picInfos.append(new QTextEdit);
+    connect(scenePics.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setPicFile(ClickableLabel*)));
     for(int i=0;i<scenePics.count();i++)
     {
         layout->addWidget(scenePics.at(i),i,0);
@@ -42,6 +51,7 @@ void BattleSceneEditor::addPicFile()
         layout->addWidget(selectBgmFiles.at(i),scenePics.count()+1+i,2);
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,3);
+    widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
 }
 
 void BattleSceneEditor::addBgmFile()
@@ -54,6 +64,9 @@ void BattleSceneEditor::addBgmFile()
     bgmFiles.append(new QLineEdit);
     playBgm.append(new ClickableLabel);
     selectBgmFiles.append(new ClickableLabel);
+    bgmFiles.last()->setMinimumHeight(20);
+    connect(playBgm.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(play(ClickableLabel*)));
+    connect(selectBgmFiles.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setBgmFile(ClickableLabel*)));
     for(int i=0;i<scenePics.count();i++)
     {
         layout->addWidget(scenePics.at(i),i,0);
@@ -67,6 +80,53 @@ void BattleSceneEditor::addBgmFile()
         layout->addWidget(selectBgmFiles.at(i),scenePics.count()+1+i,2);
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,3);
+    widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
+}
+
+void BattleSceneEditor::setPicFile(ClickableLabel* p)
+{
+    QFileDialog fileDialog;
+    QStringList fileName;
+    fileDialog.setWindowTitle(tr("选择文件"));
+    fileDialog.setDirectory(".");
+    fileDialog.setNameFilter("*.jpg *.jpeg *.png *.bmp *.ico");
+    fileDialog.setFileMode(QFileDialog::ExistingFiles);
+    fileDialog.setViewMode(QFileDialog::Detail);
+    if(fileDialog.exec())
+    {
+        fileName = fileDialog.selectedFiles();
+    }
+    if(fileName.size())
+    {
+        p->setPixmap(QPixmap(fileName.first()).scaled(p->size(),Qt::KeepAspectRatio));
+    }
+}
+
+void BattleSceneEditor::play(ClickableLabel *p)
+{
+    static QMediaPlayer *player=new QMediaPlayer(this);
+    player->setMedia(QMediaContent(QUrl::fromLocalFile(bgmFiles.at(playBgm.indexOf(p))->text())));
+    {
+        player->play();
+    }
+}
+
+void BattleSceneEditor::setBgmFile(ClickableLabel *p)
+{
+    QFileDialog fileDialog;
+    QStringList fileName;
+    fileDialog.setWindowTitle(tr("选择文件"));
+    fileDialog.setDirectory(".");
+    fileDialog.setFileMode(QFileDialog::ExistingFiles);
+    fileDialog.setViewMode(QFileDialog::Detail);
+    if(fileDialog.exec())
+    {
+        fileName = fileDialog.selectedFiles();
+    }
+    if(fileName.size())
+    {
+        bgmFiles.at(selectBgmFiles.indexOf(p))->setText(fileName.first());
+    }
 }
 
 } // namespace ptzs

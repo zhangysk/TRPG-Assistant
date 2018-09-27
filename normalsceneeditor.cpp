@@ -36,8 +36,8 @@ void NormalSceneEditor::addPicFile()
     scenePics.append(new ClickableLabel);
     scenePics.last()->setPixmap(QPixmap(":/png/openfile.png"));
     scenePics.last()->setMinimumHeight(200);
-    connect(scenePics.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setPicFile(ClickableLabel*)));
     picInfos.append(new QTextEdit);
+    connect(scenePics.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setPicFile(ClickableLabel*)));
     for(int i=0;i<scenePics.count();i++)
     {
         layout->addWidget(scenePics.at(i),i,0);
@@ -65,6 +65,8 @@ void NormalSceneEditor::addBgmFile()
     playBgm.append(new ClickableLabel);
     selectBgmFiles.append(new ClickableLabel);
     bgmFiles.last()->setMinimumHeight(20);
+    connect(playBgm.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(play(ClickableLabel*)));
+    connect(selectBgmFiles.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setBgmFile(ClickableLabel*)));
     for(int i=0;i<scenePics.count();i++)
     {
         layout->addWidget(scenePics.at(i),i,0);
@@ -97,6 +99,31 @@ void NormalSceneEditor::setPicFile(ClickableLabel* p)
     if(fileName.size())
     {
         p->setPixmap(QPixmap(fileName.first()).scaled(p->size(),Qt::KeepAspectRatio));
+    }
+}
+
+void NormalSceneEditor::play(ClickableLabel *p)
+{
+    static QMediaPlayer *player=new QMediaPlayer(this);
+    player->setMedia(QMediaContent(QUrl::fromLocalFile(bgmFiles.at(playBgm.indexOf(p))->text())));
+    player->play();
+}
+
+void NormalSceneEditor::setBgmFile(ClickableLabel *p)
+{
+    QFileDialog fileDialog;
+    QStringList fileName;
+    fileDialog.setWindowTitle(tr("选择文件"));
+    fileDialog.setDirectory(".");
+    fileDialog.setFileMode(QFileDialog::ExistingFiles);
+    fileDialog.setViewMode(QFileDialog::Detail);
+    if(fileDialog.exec())
+    {
+        fileName = fileDialog.selectedFiles();
+    }
+    if(fileName.size())
+    {
+        bgmFiles.at(selectBgmFiles.indexOf(p))->setText(fileName.first());
     }
 }
 

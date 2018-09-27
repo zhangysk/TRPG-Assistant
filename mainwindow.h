@@ -27,6 +27,7 @@ namespace ptzs{
     private:
         QPoint startPos;
         ClickableLabel *close,*minimize,*maximize;
+        ClickableLabel *save,*saveAs;
         EditArea *editArea;
         QGridLayout *layout;
         QPixmap background;

@@ -6,7 +6,9 @@
 #include <QList>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QMediaPlayer>
 #include <QFileDialog>
+#include <QDebug>
 #include "clickablelabel.h"
 #include "normalscene.h"
 
@@ -36,6 +38,8 @@ public slots:
     void addPicFile();
     void addBgmFile();
     void setPicFile(ClickableLabel* p);
+    void play(ClickableLabel *p);
+    void setBgmFile(ClickableLabel *p);
 
 };
 
