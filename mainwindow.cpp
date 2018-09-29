@@ -8,7 +8,6 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     background.load(":png/armstrong_1.png");
     setAutoFillBackground(true);
 
-
     int i=QFontDatabase::addApplicationFont(":/font/HYZhuZiHeiMoFaW.ttf");
     QString n = QFontDatabase::applicationFontFamilies(i).at(0);
     myFont.setPixelSize(20);
@@ -29,11 +28,13 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     border[Border::topRight]=new Border(Border::topRight,this);
     border[Border::bottomLeft]=new Border(Border::bottomLeft,this);
     border[Border::bottomRight]=new Border(Border::bottomRight,this);
+    save=new ClickableLabel(this);
 
     editArea->setSizePolicy(QSizePolicy::MinimumExpanding,QSizePolicy::MinimumExpanding);
 
     setWindowFlags(Qt::FramelessWindowHint);
 
+    save->setPixmap(QPixmap("qrc:/png/save.png"));
     close->setPixmap(QPixmap(":png/close.png"));
     close->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
     minimize->setPixmap(QPixmap(":png/close.png"));
@@ -52,11 +53,13 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     layout->addWidget(border[Border::right],1,5,2,1);
     layout->addWidget(border[Border::bottom],3,1,1,4);
     layout->addWidget(border[Border::topLeft],0,0);
+    layout->addWidget(save,1,1,Qt::AlignLeft);
     layout->addWidget(minimize,1,2,Qt::AlignRight);
     layout->addWidget(maximize,1,3,Qt::AlignRight);
     layout->addWidget(close,1,4,Qt::AlignRight);
     layout->addWidget(editArea,2,1,1,4,Qt::AlignCenter);
     layout->setColumnStretch(1,1);
+  //  connect(save,SIGNAL())
     connect(close,SIGNAL(clicked(ClickableLabel*)),this,SLOT(close()));
     connect(minimize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showMinimized()));
     connect(maximize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(maximizing()));

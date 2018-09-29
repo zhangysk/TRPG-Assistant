@@ -22,8 +22,6 @@ public:
     void addNormalNPC(int index=-1){(index==-1)?normalNpc.append(new NormalNpc):normalNpc.insert(index,new NormalNpc);}
     void addBattleScene(int index=-1){(index==-1)?battleScene.append(new BattleScene):battleScene.insert(index,new BattleScene);}
     void addNormalScene(int index=-1){(index==-1)?normalScene.append(new NormalScene):normalScene.insert(index,new NormalScene);}
-    void fileSaver(QString path);
-    void onAcSaveTriggered();
     QString getName(){return name;}
     QString getSummary(){return summary;}
     QString getAnnouncement(){return announcement;}

@@ -27,6 +27,7 @@
         <file>bottomborder.png</file>
         <file>addpicfile.png</file>
         <file>addbgmfile.png</file>
+        <file>save.png</file>
     </qresource>
     <qresource prefix="/font">
         <file>HYZhuZiHeiMoFaW.ttf</file>

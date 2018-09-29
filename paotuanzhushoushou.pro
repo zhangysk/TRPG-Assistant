@@ -34,7 +34,6 @@ SOURCES += \
     announcementeditor.cpp \
     mapeditor.cpp \
     map.cpp \
-    script.cpp \
     scenepicshower.cpp \
     player.cpp \
     clickablelabel.cpp \
@@ -51,8 +50,7 @@ SOURCES += \
     npcwidget.cpp \
     scenewidget.cpp \
     border.cpp \
-    multipledisplayer.cpp \
-    filesaver.cpp
+    multipledisplayer.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -81,8 +79,7 @@ HEADERS += \
     scenewidget.h \
     border.h \
     multipledisplayer.h \
-    data.h \
-    filesaver.h
+    data.h
 
 FORMS +=
 
