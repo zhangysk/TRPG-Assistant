@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     layout->addWidget(close,1,4,Qt::AlignRight);
     layout->addWidget(editArea,2,1,1,4,Qt::AlignCenter);
     layout->setColumnStretch(1,1);
-  //  connect(save,SIGNAL())
+
     connect(close,SIGNAL(clicked(ClickableLabel*)),this,SLOT(close()));
     connect(minimize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showMinimized()));
     connect(maximize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(maximizing()));

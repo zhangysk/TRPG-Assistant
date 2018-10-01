@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QWidget>
 #include "mainwindow.h"
+#include "script.h"
 #include "data.h"
 
 QFont myFont;
