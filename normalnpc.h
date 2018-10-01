@@ -28,10 +28,10 @@ public:
 
 private:
     QString name;
-    QString info;
-    QString avatar;
     int age;
     esex sex;
+    QString geRenXinXi;
+    QString avatar;
 
 };
 
