@@ -10,7 +10,7 @@ NormalNpc::NormalNpc()
 NormalNpc::NormalNpc(QString &n, QString &i)
 {
     name=n;
-    info=i;
+    geRenXinXi=i;
 }
 
 } // namespace ptzs

@@ -12,20 +12,20 @@ int KeyNpc::dice(int n, int max)
 
 void KeyNpc::autoGenerate()
 {
-    property[liLiang]=dice(3,6);
-    property[tiZhi]=dice(3,6);
-    property[tiXing]=dice(2,6)+6;
-    property[minJie]=dice(3,6);
-    property[rongMao]=dice(3,6);
-    property[zhiLi]=dice(2,6)+6;
-    property[yiZhi]=dice(3,6);
-    property[jiaoYu]=dice(3,6)+3;
-    property[xingYun]=dice(1,20);
+    attribute[liLiang]=dice(3,6);
+    attribute[tiZhi]=dice(3,6);
+    attribute[tiXing]=dice(2,6)+6;
+    attribute[minJie]=dice(3,6);
+    attribute[rongMao]=dice(3,6);
+    attribute[zhiLi]=dice(2,6)+6;
+    attribute[yiZhi]=dice(3,6);
+    attribute[jiaoYu]=dice(3,6)+3;
+    attribute[xingYun]=dice(1,20);
 
-    value[shengMing_CUR]=value[shengMing_MAX]=property[tiXing]+property[zhiLi];
-    value[moFa_CUR]=value[moFa_MAX]=property[yiZhi];
-    value[liZhi_CUR]=value[liZhi_MAX]=property[yiZhi]*5;
-    value[xingYun_CUR]=value[xingYun_MAX]=property[xingYun];
+    attribute[shengMing]=attribute[tiXing]+attribute[zhiLi];
+    attribute[moFa]=attribute[yiZhi];
+    attribute[liZhi]=attribute[yiZhi]*5;
+    attribute[xingYun]=attribute[xingYun];
 
 }
 

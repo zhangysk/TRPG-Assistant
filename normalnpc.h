@@ -16,12 +16,12 @@ public:
     NormalNpc();
     NormalNpc(QString &n,QString &i);
     QString getName(){return name;}
-    QString getInfo(){return info;}
+    QString getGeRenXinXi(){return geRenXinXi;}
     QString getAvatat(){return avatar;}
     int getAge(){return age;}
     esex getSex(){return sex;}
     void setName(QString &s){name=s;}
-    void setInfo(QString &s){info=s;}
+    void setGeRenXinXi(QString &s){geRenXinXi=s;}
     void setAvatar(QString &s){avatar=s;}
     void setAge(int a){age=a;}
     void setSex(esex s){sex=s;}

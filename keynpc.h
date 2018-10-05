@@ -148,11 +148,9 @@ public:
         yiZhi,
         jiaoYu,
         xingYun,
-        propertyNum,
         shengMing,
         moFa,
         liZhi,
-        xingYun,
         yiDong,
         shangHaiJiaCheng,
         tiGe,
@@ -285,11 +283,12 @@ public:
     struct sWeapon
     {
         QString weapon;
-        int num;
+        int difficulty;
         int damage;
         int range;
         int times;
         int ammo;
+        QString mulfunction;
     };
     static int dice(int n,int max);
     void autoGenerate();
@@ -310,15 +309,16 @@ public:
     QString getShenMiJuanZhou_ZhouWen_GuWenWu(){return shenMiJuanZhou_ZhouWen_GuWenWu;}
     QString getDiSanLeiJieChu(){return diSanLeiJieChu;}
 
-    QString getShengHuoShuiPing(){return shengHuoShuiPing;}
+    eLivingStantard getShengHuoShuiPing(){return shengHuoShuiPing;}
     QString getXieDaiWuPin(){return xieDaiWuPin;}
 
     int getAttribute(eAttribute a){return attribute[a];}
-    int getSkill(eSkill s){return skill[a];}
+    int getSkill(eSkill a){return skill[a];}
+    QString getSkillName(int i){return skillName[i];}
 
     sWeapon getWeapon(int n){return weapon[n];}
 
-    void setJob(QString a){job=a;}
+    void setJob(eJob a){job=a;}
     void setLiveArea(QString a){liveArea=a;}
     void setBornArea(QString a){bornArea=a;}
 
@@ -332,14 +332,15 @@ public:
     void setTeDian(QString a){teDian=a;}
     void setChuangShang_BaHen(QString a){chuangShang_BaHen=a;}
     void setKongJu_kuangRe(QString a){kongJu_kuangRe=a;}
-    void setShenMiJuanZhou_ZhouWen_GuWenWu(QString a){return shenMiJuanZhou_ZhouWen_GuWenWu=a;}
+    void setShenMiJuanZhou_ZhouWen_GuWenWu(QString a){shenMiJuanZhou_ZhouWen_GuWenWu=a;}
     void setDiSanLeiJieChu(QString a){diSanLeiJieChu=a;}
 
-    void setShengHuoShuiPing(QString a){shengHuoShuiPing=a;}
+    void setShengHuoShuiPing(eLivingStantard a){shengHuoShuiPing=a;}
     void setXieDaiWuPin(QString a){xieDaiWuPin=a;}
 
     void setAttribute(eAttribute n,int a){attribute[n]=a;}
     void setSkill(eSkill n,int a){skill[n]=a;}
+    void setSkillName(int i,QString s){skillName[i]=s;}
 
     void setWeapon(int n,sWeapon a){weapon[n]=a;}
 
@@ -362,11 +363,12 @@ private:
     QString shenMiJuanZhou_ZhouWen_GuWenWu;
     QString diSanLeiJieChu;
 
-    QString shengHuoShuiPing;
+    eLivingStantard shengHuoShuiPing;
     QString xieDaiWuPin;
 
     int attribute[attributeNum];
     int skill[skillNum];
+    QString skillName[6];
 
     sWeapon weapon[4];
 

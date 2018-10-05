@@ -24,21 +24,22 @@ private:
     QWidget *widget;
     QGridLayout *layout,*_layout;
     QList<QLineEdit*> infoTag,backgroundTag,assestTag,attributeTag,skillTag,weaponTag,type;
-    QList<QLineEdit*> info,background,assest,attribute,skill,weapon,skillName;
+    QList<QLineEdit*> info,background,attribute,skill,weapon,skillName;
+    QLineEdit *items;
     QTextEdit *discription;
-    QComboBox *job,*sex;
+    QComboBox *job,*sex,*livingStandard;
     ClickableLabel *avatar;
 
 signals:
 
 public slots:
-    void setInfo();
-    void setBackground();
-    void setAssest();
-    void setAttribute();
-    void setSkill();
-    void setWeapon();
-    void setSkillName();
+    void setInfo(QString s);
+    void setBackground(QString s);
+    void setAssest(QString s);
+    void setAttribute(QString s);
+    void setSkill(QString s);
+    void setWeapon(QString s);
+    void setSkillName(QString s);
 };
 
 } // namespace ptzs
