@@ -657,10 +657,13 @@ KeyNpcEditor::KeyNpcEditor(QWidget *parent) : QScrollArea(parent)
     {
         connect(info[i],SIGNAL(textChanged(QString)),this,SLOT(setInfo(QString)));
     }
+    connect(job,SIGNAL(currentIndexChanged(QString)),this,SLOT(setInfo(QString)));
+    connect(sex,SIGNAL(currentIndexChanged(QString)),this,SLOT(setInfo(QString)));
     for(int i=0;i<9;i++)
     {
         connect(background[i],SIGNAL(textChanged(QString)),this,SLOT(setBackground(QString)));
     }
+    connect(discription,SIGNAL(textChanged()),this,SLOT(setBackground(QString)));
     connect(livingStandard,SIGNAL(currentIndexChanged(QString)),this,SLOT(setAssest(QString)));
     connect(items,SIGNAL(textChanged(QString)),this,SLOT(setAssest(QString)));
     for(int i=0;i<15;i++)

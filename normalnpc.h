@@ -17,7 +17,7 @@ public:
     NormalNpc(QString &n,QString &i);
     QString getName(){return name;}
     QString getGeRenXinXi(){return geRenXinXi;}
-    QString getAvatat(){return avatar;}
+    QString getAvatar(){return avatar;}
     int getAge(){return age;}
     esex getSex(){return sex;}
     void setName(QString &s){name=s;}

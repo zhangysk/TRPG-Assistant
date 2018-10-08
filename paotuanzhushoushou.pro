@@ -50,7 +50,8 @@ SOURCES += \
     npcwidget.cpp \
     scenewidget.cpp \
     border.cpp \
-    multipledisplayer.cpp
+    multipledisplayer.cpp \
+    script.cpp
 
 HEADERS += \
     mainwindow.h \

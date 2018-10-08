@@ -3,6 +3,7 @@
 
 #include "normalnpc.h"
 #include <QString>
+#include <QStringList>
 
 namespace ptzs {
 
@@ -291,12 +292,13 @@ public:
         QString mulfunction;
     };
     static int dice(int n,int max);
+    static QStringList skillNames;
+    static QStringList attributeNames;
+
     void autoGenerate();
     eJob getJob(){return job;}
     QString getLiveArea(){return liveArea;}
     QString getBornArea(){return bornArea;}
-
-    QString getAvatar(){return avatar;}
 
     QString getRenWuMiaoShu(){return renWuMiaoShu;}
     QString getSiNian_xinNian(){return siNian_xinNian;}
@@ -321,8 +323,6 @@ public:
     void setJob(eJob a){job=a;}
     void setLiveArea(QString a){liveArea=a;}
     void setBornArea(QString a){bornArea=a;}
-
-    void setAvatar(QString a){avatar=a;}
 
     void setRenWuMiaoShu(QString a){renWuMiaoShu=a;}
     void setSiNian_xinNian(QString a){siNian_xinNian=a;}
@@ -349,8 +349,6 @@ private:
     eJob job;
     QString liveArea;
     QString bornArea;
-
-    QString avatar;
 
     QString renWuMiaoShu;
     QString siNian_xinNian;

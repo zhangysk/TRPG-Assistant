@@ -2,6 +2,8 @@
 #define SCRIPT_H
 
 #include <QString>
+#include <QFileInfo>
+#include <QXmlStreamWriter>
 #include "map.h"
 #include "keynpc.h"
 #include "battlescene.h"
@@ -30,6 +32,8 @@ public:
     NormalNpc* getNormalNPC(int index){return normalNpc.at(index);}
     BattleScene* getBattleScene(int index){return battleScene.at(index);}
     NormalScene* getNormalScene(int index){return normalScene.at(index);}
+    void scriptSaveAll(QString path);
+    void scriptSaveAllXml(QString path);
 
 private:
     QString name;
