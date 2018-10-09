@@ -5,6 +5,7 @@
 #include "data.h"
 
 QFont myFont;
+ptzs::Script script;
 
 int main(int argc, char *argv[])
 {

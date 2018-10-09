@@ -21,7 +21,7 @@ public:
     explicit NormalNpcEditor(QWidget *parent = nullptr);
 
 private:
-    NormalNpc npc;
+    NormalNpc *npc;
     QWidget *widget;
     QLineEdit *name,*_name;
     QLineEdit *sex;
@@ -38,6 +38,7 @@ signals:
 
 public slots:
     void selectAvatarFile();
+    void set();
 };
 
 } // namespace ptzs

@@ -20,7 +20,7 @@ public:
     explicit KeyNpcEditor(QWidget *parent = nullptr);
 
 private:
-    KeyNpc npc;
+    KeyNpc *npc;
     QWidget *widget;
     QGridLayout *layout,*_layout;
     QList<QLineEdit*> infoTag,backgroundTag,assestTag,attributeTag,skillTag,weaponTag,type;

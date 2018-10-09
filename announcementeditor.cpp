@@ -10,6 +10,12 @@ AnnouncementEditor::AnnouncementEditor(QWidget *parent) : QWidget(parent)
     te->setFont(myFont);
     te->setStyleSheet("background-color:transparent;");
     layout->addWidget(te,0,0);
+    connect(te,SIGNAL(textChanged()),this,SLOT(setAnnouncement()));
+}
+
+void AnnouncementEditor::setAnnouncement()
+{
+    script.setAnnouncement(te->toPlainText());
 }
 
 } // namespace ptzs

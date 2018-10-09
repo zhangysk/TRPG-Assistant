@@ -20,9 +20,9 @@ public:
     QString getAvatar(){return avatar;}
     int getAge(){return age;}
     esex getSex(){return sex;}
-    void setName(QString &s){name=s;}
-    void setGeRenXinXi(QString &s){geRenXinXi=s;}
-    void setAvatar(QString &s){avatar=s;}
+    void setName(QString s){name=s;}
+    void setGeRenXinXi(QString s){geRenXinXi=s;}
+    void setAvatar(QString s){avatar=s;}
     void setAge(int a){age=a;}
     void setSex(esex s){sex=s;}
 

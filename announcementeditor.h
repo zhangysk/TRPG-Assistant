@@ -21,6 +21,7 @@ private:
 signals:
 
 public slots:
+    void setAnnouncement();
 };
 
 } // namespace ptzs

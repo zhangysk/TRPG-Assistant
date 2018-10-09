@@ -51,6 +51,10 @@ NormalNpcEditor::NormalNpcEditor(QWidget *parent) : QScrollArea(parent)
     _layout->setColumnStretch(1,1);
     _layout->setRowStretch(5,1);
     widget->setLayout(_layout);
+    connect(_name,SIGNAL(textChanged(QString)),this,SLOT(set()));
+    connect(_sex,SIGNAL(currentIndexChanged(int)),this,SLOT(set()));
+    connect(_age,SIGNAL(textChanged(QString)),this,SLOT(set()));
+    connect(_info,SIGNAL(textChanged()),this,SLOT(set()));
 }
 
 
@@ -70,8 +74,20 @@ void NormalNpcEditor::selectAvatarFile()
     if(fileName.size())
     {
         _avatar->setPixmap(QPixmap(fileName.first()));
-        npc.setAvatar(fileName.first());
+        npc->setAvatar(fileName.first());
     }
+}
+
+void NormalNpcEditor::set()
+{
+    if(sender()==_name)
+        npc->setName(((QLineEdit*)sender())->text());
+    else if(sender()==_sex)
+        npc->setSex((NormalNpc::esex)(((QComboBox*)sender())->currentIndex()));
+    else if(sender()==_age)
+        npc->setAge(((QLineEdit*)sender())->text().toInt());
+    else if(sender()==_info)
+        npc->setGeRenXinXi(((QTextEdit*)sender())->toPlainText());
 }
 
 } // namespace ptzs

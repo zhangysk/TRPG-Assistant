@@ -29,6 +29,7 @@ private:
     QList<QLineEdit*> bgmFiles;
     QList<ClickableLabel*> playBgm;
     QList<ClickableLabel*> selectBgmFiles;
+    QList<QLineEdit*> bgmInfo;
     ClickableLabel *addBgm;
     QGridLayout *layout,*_layout;
 
@@ -38,8 +39,10 @@ public slots:
     void addPicFile();
     void addBgmFile();
     void setPicFile(ClickableLabel* p);
-    void play(ClickableLabel *p);
+    void setPicInfo();
     void setBgmFile(ClickableLabel *p);
+    void setBgmInfo(QString s);
+    void play(ClickableLabel *p);
 
 };
 

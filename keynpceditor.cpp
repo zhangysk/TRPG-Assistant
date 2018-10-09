@@ -685,22 +685,22 @@ void KeyNpcEditor::setInfo(QString s)
     switch(info.indexOf((QLineEdit*)sender()))
     {
     case 0:
-        npc.setName(s);
+        npc->setName(s);
         break;
     case 1:
-        npc.setAge(s.toInt());
+        npc->setAge(s.toInt());
         break;
     case 2:
-        npc.setLiveArea(s);
+        npc->setLiveArea(s);
         break;
     case 3:
-        npc.setBornArea(s);
+        npc->setBornArea(s);
         break;
     default:
         if(sender()==job)
-            npc.setJob((KeyNpc::eJob)(job->currentIndex()));
+            npc->setJob((KeyNpc::eJob)(job->currentIndex()));
         else if(sender()==sex)
-            npc.setSex((KeyNpc::esex)(sex->currentIndex()));
+            npc->setSex((KeyNpc::esex)(sex->currentIndex()));
         break;
     }
 }
@@ -710,35 +710,35 @@ void KeyNpcEditor::setBackground(QString s)
     switch(background.indexOf((QLineEdit*)sender()))
     {
     case 0:
-        npc.setSiNian_xinNian(((QLineEdit*)sender())->text());
+        npc->setSiNian_xinNian(((QLineEdit*)sender())->text());
         break;
     case 1:
-        npc.setZhongYaoZhiRen(((QLineEdit*)sender())->text());
+        npc->setZhongYaoZhiRen(((QLineEdit*)sender())->text());
         break;
     case 2:
-        npc.setYiYiFeiFanZhiDi(((QLineEdit*)sender())->text());
+        npc->setYiYiFeiFanZhiDi(((QLineEdit*)sender())->text());
         break;
     case 3:
-        npc.setBaoGuiZhiWu(((QLineEdit*)sender())->text());
+        npc->setBaoGuiZhiWu(((QLineEdit*)sender())->text());
         break;
     case 4:
-        npc.setTeDian(((QLineEdit*)sender())->text());
+        npc->setTeDian(((QLineEdit*)sender())->text());
         break;
     case 5:
-        npc.setChuangShang_BaHen(((QLineEdit*)sender())->text());
+        npc->setChuangShang_BaHen(((QLineEdit*)sender())->text());
         break;
     case 6:
-        npc.setKongJu_kuangRe(((QLineEdit*)sender())->text());
+        npc->setKongJu_kuangRe(((QLineEdit*)sender())->text());
         break;
     case 7:
-        npc.setShenMiJuanZhou_ZhouWen_GuWenWu(((QLineEdit*)sender())->text());
+        npc->setShenMiJuanZhou_ZhouWen_GuWenWu(((QLineEdit*)sender())->text());
         break;
     case 8:
-        npc.setDiSanLeiJieChu(((QLineEdit*)sender())->text());
+        npc->setDiSanLeiJieChu(((QLineEdit*)sender())->text());
         break;
     default:
         if(sender()==discription)
-            npc.setRenWuMiaoShu(((QTextEdit*)sender())->toPlainText());
+            npc->setRenWuMiaoShu(((QTextEdit*)sender())->toPlainText());
         break;
     }
 }
@@ -746,25 +746,25 @@ void KeyNpcEditor::setBackground(QString s)
 void KeyNpcEditor::setAssest(QString s)
 {
     if(sender()==livingStandard)
-        npc.setShengHuoShuiPing((KeyNpc::eLivingStantard)(((QComboBox*)sender())->currentIndex()));
+        npc->setShengHuoShuiPing((KeyNpc::eLivingStantard)(((QComboBox*)sender())->currentIndex()));
     else if(sender()==items)
-        npc.setXieDaiWuPin(((QLineEdit*)sender())->text());
+        npc->setXieDaiWuPin(((QLineEdit*)sender())->text());
 }
 
 void KeyNpcEditor::setAttribute(QString s)
 {
-    npc.setAttribute((KeyNpc::eAttribute)(attribute.indexOf((QLineEdit*)sender())),((QLineEdit*)sender())->text().toInt());
+    npc->setAttribute((KeyNpc::eAttribute)(attribute.indexOf((QLineEdit*)sender())),((QLineEdit*)sender())->text().toInt());
 }
 
 void KeyNpcEditor::setSkill(QString s)
 {
-    npc.setSkill((KeyNpc::eSkill)(skill.indexOf((QLineEdit*)sender())),((QLineEdit*)sender())->text().toInt());
+    npc->setSkill((KeyNpc::eSkill)(skill.indexOf((QLineEdit*)sender())),((QLineEdit*)sender())->text().toInt());
 }
 
 void KeyNpcEditor::setWeapon(QString s)
 {
     KeyNpc::sWeapon weap;
-    weap=npc.getWeapon(weapon.indexOf((QLineEdit*)sender())/7);
+    weap=npc->getWeapon(weapon.indexOf((QLineEdit*)sender())/7);
     switch(weapon.indexOf((QLineEdit*)sender())%7)
     {
     case 0:
@@ -788,12 +788,12 @@ void KeyNpcEditor::setWeapon(QString s)
     default:
         weap.mulfunction=((QLineEdit*)sender())->text();
     }
-    npc.setWeapon(weapon.indexOf((QLineEdit*)sender())/7,weap);
+    npc->setWeapon(weapon.indexOf((QLineEdit*)sender())/7,weap);
 }
 
 void KeyNpcEditor::setSkillName(QString s)
 {
-    npc.setSkillName(skillName.indexOf((QLineEdit*)sender()),s);
+    npc->setSkillName(skillName.indexOf((QLineEdit*)sender()),s);
 }
 
 } // namespace ptzs

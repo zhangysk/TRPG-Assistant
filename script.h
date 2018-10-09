@@ -4,6 +4,7 @@
 #include <QString>
 #include <QFileInfo>
 #include <QXmlStreamWriter>
+#include <QTextEdit>
 #include "map.h"
 #include "keynpc.h"
 #include "battlescene.h"
@@ -13,9 +14,7 @@ namespace ptzs {
 
 class Script
 {
-public:
-    Script();
-    Script(QString fileName);
+public slots:
     void setName(QString s){name=s;}
     void setSummary(QString s){summary=s;}
     void setAnnouncement(QString s){announcement=s;}

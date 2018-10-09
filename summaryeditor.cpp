@@ -10,6 +10,12 @@ SummaryEditor::SummaryEditor(QWidget *parent) : QWidget(parent)
     te->setFont(myFont);
     te->setStyleSheet("background-color:transparent;");
     layout->addWidget(te,0,0);
+    connect(te,SIGNAL(textChanged()),this,SLOT(setSummary()));
+}
+
+void SummaryEditor::setSummary()
+{
+    script.setSummary(te->toPlainText());
 }
 
 } // namespace ptzs
