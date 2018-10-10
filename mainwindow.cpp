@@ -63,21 +63,17 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     connect(close,SIGNAL(clicked(ClickableLabel*)),this,SLOT(close()));
     connect(minimize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showMinimized()));
     connect(maximize,SIGNAL(clicked(ClickableLabel*)),this,SLOT(maximizing()));
+    connect(save,SIGNAL(clicked(ClickableLabel*)),this,SLOT(_save()));
     setMinimumSize(909,680);
 }
 
-void MainWindow::resizeEvent(QResizeEvent *ev)
+void MainWindow::resizeEvent(QResizeEvent*)
 {
     editArea->resize(width(),height()-close->height());
     editArea->move(0,close->height());
     QPalette palette;
     palette.setBrush(QPalette::Background,QBrush(background.scaled(size(),Qt::KeepAspectRatioByExpanding)));
     setPalette(palette);
-}
-
-void MainWindow::paintEvent(QPaintEvent *event)
-{
-
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *ev)
@@ -97,7 +93,6 @@ void MainWindow::mouseMoveEvent(QMouseEvent *ev)
     }
 }
 
-
 void MainWindow::maximizing()
 {
     if(isMaximized())
@@ -106,3 +101,23 @@ void MainWindow::maximizing()
         showMaximized();
 }
 
+void MainWindow::_save()
+{
+    QFileDialog *fileDialog = new QFileDialog(this);
+    fileDialog->setWindowTitle(tr("选择保存位置"));
+    fileDialog->setAcceptMode(QFileDialog::AcceptSave);
+    fileDialog->setOption(QFileDialog::ShowDirsOnly,true);
+    fileDialog->setFileMode(QFileDialog::DirectoryOnly);
+    fileDialog->setViewMode(QFileDialog::Detail);
+    QStringList fileName;
+    if(fileDialog->exec())
+    {
+        fileName = fileDialog->selectedFiles();
+    }
+    delete fileDialog;
+    if(fileName.size())
+    {
+        script.scriptSaveAll(fileName.first());
+        script.scriptSaveAllXml(fileName.first());
+    }
+}

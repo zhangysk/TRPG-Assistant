@@ -19,7 +19,7 @@ void Script::scriptSaveAll(QString path){
         QString fileSuffix = fileInfo.suffix();
         QString tmpPath = mapPath + this->getMap(i)->getName() + "." + fileSuffix;
         counter = counter + 1;
-        bool ok = QFile::copy(this->getMap(i)->getPicFile(),tmpPath);
+        QFile::copy(this->getMap(i)->getPicFile(),tmpPath);
     }
 
     for(int i = 0; i < this->battleScene.size(); i++){
@@ -28,13 +28,13 @@ void Script::scriptSaveAll(QString path){
             QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            bool ok = QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
         }
         for(int j = 0; j < this->getBattleScene(i)->musicNum(); j++){
             QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            bool ok = QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->normalScene.size(); i++){
@@ -43,26 +43,26 @@ void Script::scriptSaveAll(QString path){
             QFileInfo fileInfo(this->getNormalScene(i)->getPics().at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            bool ok = QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
         }
         for(int j = 0; j < this->getNormalScene(i)->musicNum(); j++){
             QFileInfo fileInfo(this->getNormalScene(i)->getPics().at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            bool ok = QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->keyNpc.size(); i++){
         QFileInfo fileInfo(this->getKeyNPC(i)->getAvatar());
         QString fileSuffix = fileInfo.suffix();
         QString tmpPath = keyNpcPath + this->getKeyNPC(i)->getName() + "." + fileSuffix;
-        bool ok = QFile::copy(this->getKeyNPC(i)->getAvatar(),tmpPath);
+        QFile::copy(this->getKeyNPC(i)->getAvatar(),tmpPath);
     }
     for(int i = 0; i < this->normalNpc.size(); i++){
         QFileInfo fileInfo(this->getNormalNPC(i)->getAvatar());
         QString fileSuffix = fileInfo.suffix();
         QString tmpPath = normalNpcPath + this->getNormalNPC(i)->getName() + "." + fileSuffix;
-        bool ok = QFile::copy(this->getNormalNPC(i)->getAvatar(),tmpPath);
+        QFile::copy(this->getNormalNPC(i)->getAvatar(),tmpPath);
     }
 }
 void Script::scriptSaveAllXml(QString path){

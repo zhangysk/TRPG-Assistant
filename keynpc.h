@@ -3,6 +3,7 @@
 
 #include "normalnpc.h"
 #include <QString>
+#include <QDebug>
 #include <QStringList>
 
 namespace ptzs {
@@ -295,6 +296,7 @@ public:
     static QStringList skillNames;
     static QStringList attributeNames;
 
+    KeyNpc();
     void autoGenerate();
     eJob getJob(){return job;}
     QString getLiveArea(){return liveArea;}
@@ -320,27 +322,30 @@ public:
 
     sWeapon getWeapon(int n){return weapon[n];}
 
-    void setJob(eJob a){job=a;}
-    void setLiveArea(QString a){liveArea=a;}
-    void setBornArea(QString a){bornArea=a;}
+    void setJob(eJob a){
+        qDebug()<<a;
+        qDebug()<<job;
+        job=a;}
+    void setLiveArea(QString s){liveArea.fromStdString(s.toStdString());}
+    void setBornArea(QString s){bornArea.fromStdString(s.toStdString());}
 
-    void setRenWuMiaoShu(QString a){renWuMiaoShu=a;}
-    void setSiNian_xinNian(QString a){siNian_xinNian=a;}
-    void setZhongYaoZhiRen(QString a){zhongYaoZhiRen=a;}
-    void setYiYiFeiFanZhiDi(QString a){yiYiFeiFanZhiDi=a;}
-    void setBaoGuiZhiWu(QString a){baoGuiZhiWu=a;}
-    void setTeDian(QString a){teDian=a;}
-    void setChuangShang_BaHen(QString a){chuangShang_BaHen=a;}
-    void setKongJu_kuangRe(QString a){kongJu_kuangRe=a;}
-    void setShenMiJuanZhou_ZhouWen_GuWenWu(QString a){shenMiJuanZhou_ZhouWen_GuWenWu=a;}
-    void setDiSanLeiJieChu(QString a){diSanLeiJieChu=a;}
+    void setRenWuMiaoShu(QString s){renWuMiaoShu.fromStdString(s.toStdString());}
+    void setSiNian_xinNian(QString s){siNian_xinNian.fromStdString(s.toStdString());}
+    void setZhongYaoZhiRen(QString s){zhongYaoZhiRen.fromStdString(s.toStdString());}
+    void setYiYiFeiFanZhiDi(QString s){yiYiFeiFanZhiDi.fromStdString(s.toStdString());}
+    void setBaoGuiZhiWu(QString s){baoGuiZhiWu.fromStdString(s.toStdString());}
+    void setTeDian(QString s){teDian.fromStdString(s.toStdString());}
+    void setChuangShang_BaHen(QString s){chuangShang_BaHen.fromStdString(s.toStdString());}
+    void setKongJu_kuangRe(QString s){kongJu_kuangRe.fromStdString(s.toStdString());}
+    void setShenMiJuanZhou_ZhouWen_GuWenWu(QString s){shenMiJuanZhou_ZhouWen_GuWenWu.fromStdString(s.toStdString());}
+    void setDiSanLeiJieChu(QString s){diSanLeiJieChu.fromStdString(s.toStdString());}
 
     void setShengHuoShuiPing(eLivingStantard a){shengHuoShuiPing=a;}
-    void setXieDaiWuPin(QString a){xieDaiWuPin=a;}
+    void setXieDaiWuPin(QString s){xieDaiWuPin.fromStdString(s.toStdString());}
 
     void setAttribute(eAttribute n,int a){attribute[n]=a;}
     void setSkill(eSkill n,int a){skill[n]=a;}
-    void setSkillName(int i,QString s){skillName[i]=s;}
+    void setSkillName(int i,QString s){skillName[i].fromStdString(s.toStdString());}
 
     void setWeapon(int n,sWeapon a){weapon[n]=a;}
 

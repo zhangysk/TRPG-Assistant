@@ -18,6 +18,7 @@ class KeyNpcEditor : public QScrollArea
     Q_OBJECT
 public:
     explicit KeyNpcEditor(QWidget *parent = nullptr);
+    void setNpc(KeyNpc *n){npc=n;}
 
 private:
     KeyNpc *npc;

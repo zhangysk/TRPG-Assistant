@@ -2,6 +2,7 @@
 #define NORMALNPC_H
 
 #include <QString>
+#include <QDebug>
 
 namespace ptzs {
 
@@ -23,7 +24,13 @@ public:
     void setName(QString s){name=s;}
     void setGeRenXinXi(QString s){geRenXinXi=s;}
     void setAvatar(QString s){avatar=s;}
-    void setAge(int a){age=a;}
+    void setAge(int a){
+        qDebug()<<a;
+        qDebug()<<age;
+        age=a;
+        qDebug()<<a;
+        qDebug()<<age;
+    }
     void setSex(esex s){sex=s;}
 
 private:

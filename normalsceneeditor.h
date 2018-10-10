@@ -19,6 +19,7 @@ class NormalSceneEditor : public QScrollArea
     Q_OBJECT
 public:
     explicit NormalSceneEditor(QWidget *parent = nullptr);
+    void setScene(NormalScene *s){scene=s;}
 
 private:
     NormalScene *scene;

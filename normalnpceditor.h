@@ -19,6 +19,7 @@ class NormalNpcEditor : public QScrollArea
     Q_OBJECT
 public:
     explicit NormalNpcEditor(QWidget *parent = nullptr);
+    void setNpc(NormalNpc *n){npc=n;}
 
 private:
     NormalNpc *npc;

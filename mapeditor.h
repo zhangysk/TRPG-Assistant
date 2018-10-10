@@ -18,7 +18,7 @@ class MapEditor : public QWidget
     Q_OBJECT
 public:
     explicit MapEditor(QWidget *parent = nullptr);
-    void selectMap(Map *map,int i);
+    void setMap(Map *m){map=m;}
     void setPixmap(const QPixmap &pic);
 
 private:

@@ -19,6 +19,7 @@ class BattleSceneEditor : public QScrollArea
     Q_OBJECT
 public:
     explicit BattleSceneEditor(QWidget *parent = nullptr);
+    void setScene(BattleScene *s){scene=s;}
 
 private:
     BattleScene *scene;

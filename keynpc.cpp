@@ -2,6 +2,12 @@
 
 namespace ptzs {
 
+KeyNpc::KeyNpc()
+{
+    job=zaJiYanYuan;
+    qDebug()<<job;
+}
+
 int KeyNpc::dice(int n, int max)
 {
     int r=0;

@@ -62,18 +62,28 @@ void MultipleDisplayer::addWidget()
     switch (T) {
     case map:
         widgets->insertWidget(widgets->count()-1,new MapEditor);
+        script.addMap();
+        ((MapEditor*)(widgets->widget(widgets->count()-1)))->setMap(script.getMap(script.mapNum()-1));
         break;
     case keyNpc:
         widgets->insertWidget(widgets->count()-1,new KeyNpcEditor);
+        script.addKeyNPC();
+        ((KeyNpcEditor*)(widgets->widget(widgets->count()-1)))->setNpc(script.getKeyNPC(script.keyNpcNum()-1));
         break;
     case normalNpc:
         widgets->insertWidget(widgets->count()-1,new NormalNpcEditor);
+        script.addNormalNPC();
+        ((NormalNpcEditor*)(widgets->widget(widgets->count()-1)))->setNpc(script.getNormalNPC(script.normalNpcNum()-1));
         break;
     case battleScene:
         widgets->insertWidget(widgets->count()-1,new BattleSceneEditor);
+        script.addBattleScene();
+        ((BattleSceneEditor*)(widgets->widget(widgets->count()-1)))->setScene(script.getBattleScene(script.battleSceneNum()-1));
         break;
     case normalScene:
         widgets->insertWidget(widgets->count()-1,new NormalSceneEditor);
+        script.addNormalScene();
+        ((NormalSceneEditor*)(widgets->widget(widgets->count()-1)))->setScene(script.getNormalScene(script.normalSceneNum()-1));
         break;
     default:
         widgets->insertWidget(widgets->count()-1,new QWidget);

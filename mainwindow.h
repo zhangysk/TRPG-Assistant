@@ -20,7 +20,6 @@ namespace ptzs{
 
     protected:
         void resizeEvent(QResizeEvent *ev);
-        void paintEvent(QPaintEvent *ev);
         void mousePressEvent(QMouseEvent *ev);
         void mouseMoveEvent(QMouseEvent *ev);
 
@@ -37,6 +36,7 @@ namespace ptzs{
 
     public slots:
         void maximizing();
+        void _save();
     };
 }
 
