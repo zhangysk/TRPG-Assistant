@@ -2,6 +2,18 @@
 
 namespace ptzs {
 
+Script::Script()
+{
+        name="123";
+        summary="123";
+        announcement="123";
+        maps.append(new Map);
+        keyNpc.append(new KeyNpc);
+        normalNpc.append(new NormalNpc);
+        battleScene.append(new BattleScene);
+        normalScene.append(new NormalScene);
+}
+
 void Script::scriptSaveAll(QString path){
 /*              这个函数用来转存部分需要转存的文件，如图片、音乐等                                   */
 /*                              创建正确的文件夹目录                                            */

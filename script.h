@@ -15,6 +15,7 @@ namespace ptzs {
 class Script
 {
 public slots:
+    Script();
     void setName(QString s){name=s;}
     void setSummary(QString s){summary=s;}
     void setAnnouncement(QString s){announcement=s;}

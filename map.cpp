@@ -5,7 +5,7 @@ namespace ptzs {
 Map::Map()
 {
     name=QString("请输入地图名称");
-    picFile=QString(":png/map.png");
+    picFile=QString("");
     introduction=QString("地图相关介绍");
 }
 

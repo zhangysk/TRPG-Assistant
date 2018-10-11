@@ -11,12 +11,6 @@ NormalNpc::NormalNpc()
     avatar=("");
 }
 
-NormalNpc::NormalNpc(QString &n, QString &i)
-{
-    name=n;
-    geRenXinXi=i;
-}
-
 void NormalNpc::setAge(int a){
     age=a;
 }

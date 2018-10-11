@@ -72,7 +72,7 @@ void NormalSceneEditor::addBgmFile()
     bgmFiles.last()->setMinimumHeight(20);
     connect(playBgm.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(play(ClickableLabel*)));
     connect(selectBgmFiles.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setBgmFile(ClickableLabel*)));
-    connect(bgmFiles.last(),SIGNAL(textChanged(QString)),this,SLOT(setBgmInfo(QString)));
+    connect(bgmInfo.last(),SIGNAL(textChanged(QString)),this,SLOT(setBgmInfo(QString)));
     for(int i=0;i<scenePics.count();i++)
     {
         layout->addWidget(scenePics.at(i),i,0);

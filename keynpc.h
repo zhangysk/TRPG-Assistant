@@ -322,10 +322,7 @@ public:
 
     sWeapon getWeapon(int n){return weapon[n];}
 
-    void setJob(eJob a){
-        qDebug()<<a;
-        qDebug()<<job;
-        job=a;}
+    void setJob(eJob a){job=a;}
     void setLiveArea(QString s){liveArea.fromStdString(s.toStdString());}
     void setBornArea(QString s){bornArea.fromStdString(s.toStdString());}
 

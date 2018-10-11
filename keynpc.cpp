@@ -4,8 +4,54 @@ namespace ptzs {
 
 KeyNpc::KeyNpc()
 {
-    job=zaJiYanYuan;
-    qDebug()<<job;
+    setName("");
+    setAge(0);
+    setSex(female);
+    setGeRenXinXi("");
+    setAvatar("");
+
+    job=kuaiJiShi;
+    liveArea="";
+    bornArea="";
+
+    renWuMiaoShu="";
+    siNian_xinNian="";
+    zhongYaoZhiRen="";
+    yiYiFeiFanZhiDi="";
+    baoGuiZhiWu="";
+    teDian="";
+    chuangShang_BaHen="";
+    kongJu_kuangRe="";
+    shenMiJuanZhou_ZhouWen_GuWenWu="";
+    diSanLeiJieChu="";
+
+    shengHuoShuiPing=shenWuFenWen;
+    xieDaiWuPin="";
+
+    for(int i=0;i<attributeNum;i++)
+    {
+        attribute[i]=0;
+    }
+    for(int i=0;i<skillNum;i++)
+    {
+        skill[i]=0;
+    }
+    for(int i=0;i<6;i++)
+    {
+        attribute[i]=0;
+    }
+    sWeapon w;
+    w.ammo=0;
+    w.damage=0;
+    w.difficulty=0;
+    w.mulfunction="";
+    w.range=0;
+    w.times=0;
+    w.weapon="";
+    for(int i=0;i<4;i++)
+    {
+        weapon[i]=w;
+    }
 }
 
 int KeyNpc::dice(int n, int max)
@@ -35,7 +81,7 @@ void KeyNpc::autoGenerate()
 
 }
 
-QStringList KeyNpc::skillNames=QStringList()<<"会计师"<<"杂技演员"<<"戏剧演员"<<"电影演员"<<"中介调查员"<<"精神病医生（古典）"<<"动物训练师"<<"古文物学家（原作向）"<<"古董商"<<"考古学家（原作向）"<<"建筑师"<<"艺术家"<<"精神病院护工"<<"运动员"<<"作家（原作向）"<<"酒保"<<"猎人"<<"书商"<<"赏金猎人"<<"拳击手/摔跤手"<<"管家/侍者/女仆"<<"神职人员"<<"计算机程序员"<<"黑客（现代）"<<"牛仔"<<"工匠"<<"刺客"<<"银行劫匪"<<"打手"<<"窃贼"<<"欺诈师"<<"独行大盗"<<"女盗匪（古典）"<<"赃物贩子"<<"赝造者"<<"走私者"<<"混混"<<"教团首领"<<"除魅师（现代）"<<"设计师"<<"业余艺术爱好者（原作向）"<<"潜水员"<<"医生（原作向）"<<"流浪者"<<"私人司机"<<"司机"<<"出租车司机"<<"编辑"<<"政府官员"<<"工程师"<<"艺人"<<"探险家（古典）"<<"农民"<<"联邦探员"<<"消防员"<<"驻外记者"<<"法医"<<"赌徒"<<"黑老大"<<"马仔"<<"绅士/淑女"<<"游民"<<"勤杂护工"<<"调查记者"<<"通讯记者"<<"法官"<<"实验室助理"<<"非熟练工人"<<"伐木工"<<"矿工"<<"律师"<<"图书馆管理员（原作向）"<<"技师/技术工人"<<"军官"<<"传教士"<<"登山家"<<"博物馆管理员"<<"音乐家"<<"护士"<<"神秘学家"<<"旅行家"<<"超心理学家"<<"药剂师"<<"摄影师"<<"摄影记者"<<"飞行员"<<"特技飞行员（古典）"<<"警察/警探（原作向）"<<"巡逻警察"<<"私家侦探"<<"教授（原作向）"<<"淘金客"<<"性工作者"<<"精神病学家"<<"心理学家/心理分析学家"<<"研究员"<<"军舰海员"<<"民用船海员"<<"销售员"<<"科学家"<<"秘书"<<"店老板"<<"士兵/海军陆战队"<<"间谍"<<"学生/实习生"<<"替身演员"<<"部落成员"<<"殡葬师"<<"工会活动家"<<"服务生"<<"职员/主管"<<"中/高层管理人员"<<"狂热者"<<"饲养员";
+QStringList KeyNpc::skillNames=QStringList()<<"kuaiJi"<<"renLeiXue"<<"guJia"<<"kaoGuXue"<<"yiShuYuGongYi_YanJi"<<"yiShuYuGongYi_WenXue"<<"yiShuYuGongYi_LiFa"<<"yiShuYuGongYi_MoLiSiWu"<<"yiShuYuGongYi_ShuFa"<<"yiShuYuGongYi_GeJuGeChang"<<"yiShuYuGongYi_MuGong"<<"yiShuYuGongYi_FenShuaYouQi"<<"yiShuYuGongYi_ChuYi"<<"yiShuYuGongYi_SheYing"<<"yiShuYuGongYi_WuDao"<<"yiShuYuGongYi_TaoGong"<<"yiShuYuGongYi_MeiShu"<<"yiShuYuGongYi_DiaoKe"<<"yiShuYuGongYi_WeiZao"<<"yiShuYuGongYi_ZhenKongChuiYeJi"<<"yiShuYuGongYi_GengZuo"<<"yiShuYuGongYi_YueQi"<<"yiShuYuGongYi_XunYang"<<"yiShuYuGongYi_DaZi"<<"yiShuYuGongYi_SuJi"<<"yiShuYuGongYi_ZhiTu"<<"meiHuo"<<"panPa"<<"dianNaoShiYong"<<"xinYongPingJi"<<"keSuLuShenHua"<<"qiaoZhuang"<<"shanBi"<<"qiCheJiaShi"<<"dianQiWeiXiu"<<"dianZiXue"<<"huaShu"<<"geDou_FuTou"<<"geDou_DouOu"<<"geDou_DianJu"<<"geDou_LianJia"<<"geDou_JiaoSha"<<"geDou_Mao"<<"geDou_Jian"<<"geDou_BianZi"<<"sheJi_gong"<<"sheJi_shouQiang"<<"sheJi_ZhongWuQi"<<"sheJi_HuoYanPenSheQi"<<"sheJi_JiGuanQiang"<<"sheJi_BuQiangXianDanQiang"<<"sheJi_ChongFengQiang"<<"jiJiu"<<"liShi"<<"weiHe"<<"tiaoYue"<<"qiTaYuYan_PlayerDefine_1"<<"qiTaYuYan_PlayerDefine_2"<<"muYu"<<"faLv"<<"tuShuGuanShiYong"<<"lingTing"<<"suoJiang"<<"jiXieWeiXiu"<<"yiXue"<<"ziRanXue"<<"lingHang"<<"shenMiXue"<<"caoZongZhongXingjiXie"<<"shuiFu"<<"jiaShi_ReQiQiu"<<"jiaShi_FeiTing"<<"jiaShi_LuoXuanJiangFeiJi"<<"jiaShi_PenQiFeiJi"<<"jiaShi_KeJi"<<"jiaShi_PenQiZhanDouji"<<"jiaShi_ZhiShengFeiJi"<<"jiaShi_Chuan"<<"xinliFenXi"<<"xinliXue"<<"qiShu"<<"keXue_TianWenXue"<<"keXue_ShengWuXue"<<"keXue_ZhiWuXue"<<"keXue_HuaXue"<<"keXue_MiMaXue"<<"keXue_GongChengXue"<<"keXue_WuZhengXue"<<"keXue_DiZhiXue"<<"keXue_ShuXue"<<"keXue_QiXiangXue"<<"keXue_YaoXue"<<"keXue_WuLiXue"<<"keXue_DongWuXue"<<"miaoShou"<<"zhenCha"<<"yinMiXingDong"<<"shengCun_ShaMo"<<"shengCun_HaiYang"<<"shengCun_JiDi"<<"shengCun_ShanDi"<<"youYong"<<"touZhi"<<"zhuiZong"<<"feiChangGuiJiNeng_DongWuXunYang"<<"feiChangGuijiNeng_PaoShu"<<"feiChangGuijiNeng_BaoPo"<<"feiChangGuijiNeng_QianShui"<<"feiChangGuijiNeng_CuiMian"<<"feiChangGuijiNeng_DuChun"<<"xueWen_PlayerDefine_1"<<"xueWen_PlayerDefine_2"<<"playerDefine_1"<<"playerDefine_2"<<"playerDefine_3"<<"renXuan"<<"sanJiao"<<"xing"<<"yuan"<<"fangKuai";
 QStringList KeyNpc::attributeNames=QStringList()<<"力量"<<"体质"<<"体型"<<"敏捷"<<"容貌"<<"智力"<<"意志"<<"教育"<<"幸运"<<"生命值"<<"魔法值"<<"理智值"<<"移动力"<<"伤害加值"<<"体格";
 
 } // namespace ptzs
