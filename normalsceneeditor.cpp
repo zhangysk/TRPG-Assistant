@@ -2,9 +2,9 @@
 
 namespace ptzs {
 
-NormalSceneEditor::NormalSceneEditor(QWidget *parent) : QScrollArea(parent)
+NormalSceneEditor::NormalSceneEditor(NormalScene *s,QWidget *parent) : QScrollArea(parent)
 {
-    scene=new NormalScene;
+    scene=s;
     widget=new QWidget(this);
     addPic=new ClickableLabel(this);
     addBgm=new ClickableLabel(this);
@@ -54,8 +54,8 @@ void NormalSceneEditor::addPicFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getPics().append("");
-    scene->getPicInfo().append("");
+    scene->getPics()->append(QString(""));
+    scene->getPicInfo()->append(QString(""));
 }
 
 void NormalSceneEditor::addBgmFile()
@@ -88,8 +88,8 @@ void NormalSceneEditor::addBgmFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getMusics().append("");
-    scene->getMusicInfo().append("");
+    scene->getMusics()->append("");
+    scene->getMusicInfo()->append("");
 }
 
 void NormalSceneEditor::setPicFile(ClickableLabel* p)
@@ -108,7 +108,9 @@ void NormalSceneEditor::setPicFile(ClickableLabel* p)
     if(fileName.size())
     {
         p->setPixmap(QPixmap(fileName.first()).scaled(p->size(),Qt::KeepAspectRatio));
-        scene->getPics().replace(scenePics.indexOf(p),fileName.first());
+        qDebug()<<scenePics.indexOf(p);
+        qDebug()<<scene->getPics()->count();
+        scene->getPics()->replace(scenePics.indexOf(p),fileName.first());
     }
 }
 
@@ -136,18 +138,18 @@ void NormalSceneEditor::setBgmFile(ClickableLabel *p)
     if(fileName.size())
     {
         bgmFiles.at(selectBgmFiles.indexOf(p))->setText(fileName.first());
-        scene->getMusics().replace(selectBgmFiles.indexOf(p),fileName.first());
+        scene->getMusics()->replace(selectBgmFiles.indexOf(p),fileName.first());
     }
 }
 
 void NormalSceneEditor::setPicInfo()
 {
-    scene->getPicInfo().replace(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
+    scene->getPicInfo()->replace(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
 }
 
 void NormalSceneEditor::setBgmInfo(QString s)
 {
-    scene->getMusicInfo().replace(bgmInfo.indexOf((QLineEdit*)sender()),s);
+    scene->getMusicInfo()->replace(bgmInfo.indexOf((QLineEdit*)sender()),s);
 }
 
 } // namespace ptzs

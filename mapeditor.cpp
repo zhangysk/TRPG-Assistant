@@ -2,9 +2,9 @@
 
 namespace ptzs {
 
-MapEditor::MapEditor(QWidget *parent) : QWidget(parent)
+MapEditor::MapEditor(Map *m,QWidget *parent) : QWidget(parent)
 {
-    map=new Map;
+    map=m;
     le=new QLineEdit(QString("输入名称"),this);
     le->setAlignment(Qt::AlignHCenter);
     le->setFont(myFont);

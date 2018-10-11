@@ -2,9 +2,9 @@
 
 namespace ptzs {
 
-BattleSceneEditor::BattleSceneEditor(QWidget *parent) : QScrollArea(parent)
+BattleSceneEditor::BattleSceneEditor(BattleScene *s,QWidget *parent) : QScrollArea(parent)
 {
-    scene=new BattleScene;
+    scene=s;
     widget=new QWidget(this);
     addPic=new ClickableLabel(this);
     addBgm=new ClickableLabel(this);
@@ -54,8 +54,8 @@ void BattleSceneEditor::addPicFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getPics().append("");
-    scene->getPicInfo().append("");
+    scene->getPics()->append("");
+    scene->getPicInfo()->append("");
 }
 
 void BattleSceneEditor::addBgmFile()
@@ -88,8 +88,8 @@ void BattleSceneEditor::addBgmFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getMusics().append("");
-    scene->getMusicInfo().append("");
+    scene->getMusics()->append("");
+    scene->getMusicInfo()->append("");
 }
 
 void BattleSceneEditor::setPicFile(ClickableLabel* p)
@@ -108,7 +108,7 @@ void BattleSceneEditor::setPicFile(ClickableLabel* p)
     if(fileName.size())
     {
         p->setPixmap(QPixmap(fileName.first()).scaled(p->size(),Qt::KeepAspectRatio));
-        scene->getPics().replace(scenePics.indexOf(p),fileName.first());
+        scene->getPics()->replace(scenePics.indexOf(p),fileName.first());
     }
 }
 
@@ -136,18 +136,18 @@ void BattleSceneEditor::setBgmFile(ClickableLabel *p)
     if(fileName.size())
     {
         bgmFiles.at(selectBgmFiles.indexOf(p))->setText(fileName.first());
-        scene->getMusics().replace(selectBgmFiles.indexOf(p),fileName.first());
+        scene->getMusics()->replace(selectBgmFiles.indexOf(p),fileName.first());
     }
 }
 
 void BattleSceneEditor::setPicInfo()
 {
-    scene->getPicInfo().replace(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
+    scene->getPicInfo()->replace(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
 }
 
 void BattleSceneEditor::setBgmInfo(QString s)
 {
-    scene->getMusicInfo().replace(bgmInfo.indexOf((QLineEdit*)sender()),s);
+    scene->getMusicInfo()->replace(bgmInfo.indexOf((QLineEdit*)sender()),s);
 }
 
 } // namespace ptzs

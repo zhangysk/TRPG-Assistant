@@ -21,17 +21,6 @@ public:
     QString getAvatar(){return avatar;}
     int getAge(){return age;}
     esex getSex(){return sex;}
-    void setName(QString s){name=s;}
-    void setGeRenXinXi(QString s){geRenXinXi=s;}
-    void setAvatar(QString s){avatar=s;}
-    void setAge(int a){
-        qDebug()<<a;
-        qDebug()<<age;
-        age=a;
-        qDebug()<<a;
-        qDebug()<<age;
-    }
-    void setSex(esex s){sex=s;}
 
 private:
     QString name;
@@ -39,6 +28,13 @@ private:
     esex sex;
     QString geRenXinXi;
     QString avatar;
+
+public slots:
+    void setName(QString s){name=s;}
+    void setGeRenXinXi(QString s){geRenXinXi=s;}
+    void setAvatar(QString s){avatar=s;}
+    void setAge(int a);
+    void setSex(esex s){sex=s;}
 
 };
 

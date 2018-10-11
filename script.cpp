@@ -25,31 +25,31 @@ void Script::scriptSaveAll(QString path){
     for(int i = 0; i < this->battleScene.size(); i++){
         QString tmpPath = battleScenesPath + this->getBattleScene(i)->getName();
         for(int j = 0; j < this->getBattleScene(i)->picNum(); j++){
-            QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
+            QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics()->at(j),tmpPath2);
         }
         for(int j = 0; j < this->getBattleScene(i)->musicNum(); j++){
-            QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
+            QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            QFile::copy(this->getBattleScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics()->at(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->normalScene.size(); i++){
         QString tmpPath = normalScenesPath + this->getNormalScene(i)->getName();
         for(int j = 0; j < this->getNormalScene(i)->picNum(); j++){
-            QFileInfo fileInfo(this->getNormalScene(i)->getPics().at(j));
+            QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics()->at(j),tmpPath2);
         }
         for(int j = 0; j < this->getNormalScene(i)->musicNum(); j++){
-            QFileInfo fileInfo(this->getNormalScene(i)->getPics().at(j));
+            QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            QFile::copy(this->getNormalScene(i)->getPics().at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics()->at(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->keyNpc.size(); i++){
@@ -98,9 +98,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeTextElement("introduction",this->getNormalScene(i)->getIntro());
             indexWriter.writeStartElement("pics");
             QString counter = "1";
-            for(int j = 0; j < this->getNormalScene(i)->getPicInfo().size(); j++){
-                indexWriter.writeTextElement("summary of pic" + counter,this->getNormalScene(i)->getPicInfo().at(j));
-                QFileInfo fileInfo(this->getNormalScene(i)->getPics().at(j));
+            for(int j = 0; j < this->getNormalScene(i)->getPicInfo()->size(); j++){
+                indexWriter.writeTextElement("summary of pic" + counter,this->getNormalScene(i)->getPicInfo()->at(j));
+                QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of pic"+counter,tmpPath2);
@@ -109,9 +109,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeEndElement();
             indexWriter.writeStartElement("musics");
             counter = "1";
-            for(int j = 0; j < this->getNormalScene(i)->getMusicInfo().size(); j++){
-                indexWriter.writeTextElement("summary of music"+counter,this->getNormalScene(i)->getMusicInfo().at(j));
-                QFileInfo fileInfo(this->getNormalScene(i)->getMusics().at(j));
+            for(int j = 0; j < this->getNormalScene(i)->getMusicInfo()->size(); j++){
+                indexWriter.writeTextElement("summary of music"+counter,this->getNormalScene(i)->getMusicInfo()->at(j));
+                QFileInfo fileInfo(this->getNormalScene(i)->getMusics()->at(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of music"+counter,tmpPath2);
@@ -129,9 +129,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeTextElement("introduction",this->getBattleScene(i)->getIntro());
             indexWriter.writeStartElement("pics");
             QString counter = "1";
-            for(int j = 0; j < this->getBattleScene(i)->getPicInfo().size(); j++){
-                indexWriter.writeTextElement("summary of pic"+counter,this->getBattleScene(i)->getPicInfo().at(j));
-                QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
+            for(int j = 0; j < this->getBattleScene(i)->getPicInfo()->size(); j++){
+                indexWriter.writeTextElement("summary of pic"+counter,this->getBattleScene(i)->getPicInfo()->at(j));
+                QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of pic"+counter,tmpPath2);
@@ -140,9 +140,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeEndElement();
             indexWriter.writeStartElement("musics");
             counter = "1";
-            for(int j = 0; j < this->getBattleScene(i)->getMusicInfo().size(); j++){
-                indexWriter.writeTextElement("summary of music"+counter,this->getBattleScene(i)->getMusicInfo().at(j));
-                QFileInfo fileInfo(this->getBattleScene(i)->getPics().at(j));
+            for(int j = 0; j < this->getBattleScene(i)->getMusicInfo()->size(); j++){
+                indexWriter.writeTextElement("summary of music"+counter,this->getBattleScene(i)->getMusicInfo()->at(j));
+                QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of music"+counter,tmpPath2);

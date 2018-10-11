@@ -2,9 +2,10 @@
 
 namespace ptzs {
 
-NormalNpcEditor::NormalNpcEditor(QWidget *parent) : QScrollArea(parent)
+NormalNpcEditor::NormalNpcEditor(NormalNpc *n,QWidget *parent) : QScrollArea(parent)
 {
     setStyleSheet("background-color:transparent;");
+    npc=n;
 
     widget=new QWidget(this);
     name=new QLineEdit("姓名：",this);

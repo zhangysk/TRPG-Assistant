@@ -2,8 +2,9 @@
 
 namespace ptzs {
 
-KeyNpcEditor::KeyNpcEditor(QWidget *parent) : QScrollArea(parent)
+KeyNpcEditor::KeyNpcEditor(KeyNpc *n,QWidget *parent) : QScrollArea(parent)
 {
+    npc=n;
     widget=new QWidget(this);
     layout=new QGridLayout;
     _layout=new QGridLayout(this);

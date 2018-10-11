@@ -23,10 +23,10 @@ public:
     int musicNum(){return musics.isEmpty()?0:musics.size();}
     QString getName(){return name;}
     QString getIntro(){return intro;}
-    QStringList getPics(){return pics;}
-    QStringList getPicInfo(){return picInfo;}
-    QStringList getMusics(){return musics;}
-    QStringList getMusicInfo(){return musicInfo;}
+    QStringList* getPics(){return &pics;}
+    QStringList* getPicInfo(){return &picInfo;}
+    QStringList* getMusics(){return &musics;}
+    QStringList* getMusicInfo(){return &musicInfo;}
 
 };
 
