@@ -22,6 +22,7 @@ MultipleDisplayer::MultipleDisplayer(QWidget *parent) : QWidget(parent)
     connect(left,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showLast()));
     connect(right,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showNext()));
     connect((ClickableLabel*)(widgets->widget(0)),SIGNAL(clicked(ClickableLabel*)),this,SLOT(addWidget()));
+    connect(&script,SIGNAL(sAdd(type)),this,SLOT(addWidget(type)));
 }
 
 MultipleDisplayer::MultipleDisplayer(type t,QWidget *parent) : QWidget(parent)
@@ -57,27 +58,50 @@ void MultipleDisplayer::showNext()
     widgets->setCurrentIndex((widgets->currentIndex()+1)%widgets->count());
 }
 
+void MultipleDisplayer::addWidget(type t)
+{
+    if(t==T)
+    {
+        switch (T) {
+        case tMap:
+            widgets->insertWidget(widgets->count()-1,new MapEditor(script.getMap(script.mapNum()-1),this));
+            break;
+        case tKeyNpc:
+            widgets->insertWidget(widgets->count()-1,new KeyNpcEditor(script.getKeyNPC(script.keyNpcNum()-1),this));
+            break;
+        case tNormalNpc:
+            widgets->insertWidget(widgets->count()-1,new NormalNpcEditor(script.getNormalNPC(script.normalNpcNum()-1),this));
+            break;
+        case tBattleScene:
+            widgets->insertWidget(widgets->count()-1,new BattleSceneEditor(script.getBattleScene(script.battleSceneNum()-1),this));
+            break;
+        case tNormalScene:
+            widgets->insertWidget(widgets->count()-1,new NormalSceneEditor(script.getNormalScene(script.normalSceneNum()-1),this));
+            break;
+        default:
+            widgets->insertWidget(widgets->count()-1,new QWidget);
+            break;
+        }
+        widgets->setCurrentIndex(widgets->count()-2);
+    }
+}
+
 void MultipleDisplayer::addWidget()
 {
     switch (T) {
-    case map:
-        script.addMap();
+    case tMap:
         widgets->insertWidget(widgets->count()-1,new MapEditor(script.getMap(script.mapNum()-1),this));
         break;
-    case keyNpc:
-        script.addKeyNPC();
+    case tKeyNpc:
         widgets->insertWidget(widgets->count()-1,new KeyNpcEditor(script.getKeyNPC(script.keyNpcNum()-1),this));
         break;
-    case normalNpc:
-        script.addNormalNPC();
+    case tNormalNpc:
         widgets->insertWidget(widgets->count()-1,new NormalNpcEditor(script.getNormalNPC(script.normalNpcNum()-1),this));
         break;
-    case battleScene:
-        script.addBattleScene();
+    case tBattleScene:
         widgets->insertWidget(widgets->count()-1,new BattleSceneEditor(script.getBattleScene(script.battleSceneNum()-1),this));
         break;
-    case normalScene:
-        script.addNormalScene();
+    case tNormalScene:
         widgets->insertWidget(widgets->count()-1,new NormalSceneEditor(script.getNormalScene(script.normalSceneNum()-1),this));
         break;
     default:
@@ -86,5 +110,4 @@ void MultipleDisplayer::addWidget()
     }
     widgets->setCurrentIndex(widgets->count()-2);
 }
-
 } // namespace ptzs

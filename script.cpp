@@ -2,8 +2,9 @@
 
 namespace ptzs {
 
-Script::Script()
+Script::Script(QObject *parent)
 {
+    setParent(parent);
 }
 
 void Script::scriptSaveAll(QString path){
@@ -69,6 +70,7 @@ void Script::scriptSaveAll(QString path){
         QFile::copy(this->getNormalNPC(i)->getAvatar(),tmpPath);
     }
 }
+
 void Script::scriptSaveAllXml(QString path){
     QString fileName = path + this->getName() +"Index.xml";
     QFile xmlFile(fileName);
@@ -226,6 +228,7 @@ void Script::scriptSaveAllXml(QString path){
     indexWriter.writeEndElement();
     indexWriter.writeEndElement();
 }
+
 void Script::scriptReadAll(QString path){
     QFile xmlFile(path);
     if(!xmlFile.open(QFile::ReadOnly)){

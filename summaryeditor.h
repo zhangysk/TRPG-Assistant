@@ -5,6 +5,7 @@
 #include <QGridLayout>
 #include <QTextEdit>
 #include "data.h"
+#include "script.h"
 
 namespace ptzs {
 

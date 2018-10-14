@@ -7,6 +7,7 @@
 #include <QFontDatabase>
 #include <QFont>
 #include "data.h"
+#include "script.h"
 #include "clickablelabel.h"
 #include "editarea.h"
 #include "border.h"

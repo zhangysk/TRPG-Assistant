@@ -19,11 +19,11 @@ EditArea::EditArea(QWidget *parent) : QFrame(parent)
     widget->addWidget(new SceneWidget(widget));
     widget->addWidget(new SummaryEditor(widget));
     widget->addWidget(new AnnouncementEditor(widget));
-    widget->addWidget(new MultipleDisplayer(MultipleDisplayer::map,widget));
-    widget->addWidget(new MultipleDisplayer(MultipleDisplayer::normalNpc,widget));
-    widget->addWidget(new MultipleDisplayer(MultipleDisplayer::keyNpc,widget));
-    widget->addWidget(new MultipleDisplayer(MultipleDisplayer::normalScene,widget));
-    widget->addWidget(new MultipleDisplayer(MultipleDisplayer::battleScene,widget));
+    widget->addWidget(new MultipleDisplayer(tMap,widget));
+    widget->addWidget(new MultipleDisplayer(tNormalNpc,widget));
+    widget->addWidget(new MultipleDisplayer(tKeyNpc,widget));
+    widget->addWidget(new MultipleDisplayer(tNormalScene,widget));
+    widget->addWidget(new MultipleDisplayer(tBattleScene,widget));
 
     file->setPixmap(QPixmap(":png/tag10.png"));
     info->setPixmap(QPixmap(":png/tag21.png"));
@@ -152,12 +152,13 @@ void EditArea::openFile()
     QStringList fileName;
     fileDialog.setWindowTitle(tr("选择文件"));
     fileDialog.setDirectory(".");
-    fileDialog.setNameFilter("*.ptj");
+    fileDialog.setNameFilter("*.xml");
     fileDialog.setFileMode(QFileDialog::ExistingFiles);
     fileDialog.setViewMode(QFileDialog::Detail);
     if(fileDialog.exec())
     {
         fileName = fileDialog.selectedFiles();
+        script.scriptReadAll(fileName.first());
     }
 }
 

@@ -7,24 +7,28 @@
 #include <QTextEdit>
 #include <QDomDocument>
 #include "map.h"
+#include "type.h"
 #include "keynpc.h"
 #include "battlescene.h"
 #include "normalscene.h"
 
 namespace ptzs {
 
-class Script
+class Script : public QObject
 {
-public slots:
-    Script();
+
+    Q_OBJECT
+
+public:
+    Script(QObject *parent=0);
     void setName(QString s){name=s;}
     void setSummary(QString s){summary=s;}
     void setAnnouncement(QString s){announcement=s;}
-    void addMap(int index=-1){(index==-1)?maps.append(new Map):maps.insert(index,new Map);}
-    void addKeyNPC(int index=-1){(index==-1)?keyNpc.append(new KeyNpc):keyNpc.insert(index,new KeyNpc);}
-    void addNormalNPC(int index=-1){(index==-1)?normalNpc.append(new NormalNpc):normalNpc.insert(index,new NormalNpc);}
-    void addBattleScene(int index=-1){(index==-1)?battleScene.append(new BattleScene):battleScene.insert(index,new BattleScene);}
-    void addNormalScene(int index=-1){(index==-1)?normalScene.append(new NormalScene):normalScene.insert(index,new NormalScene);}
+    void addMap(int index=-1){(index==-1)?maps.append(new Map):maps.insert(index,new Map);emit sAdd(tMap);}
+    void addKeyNPC(int index=-1){(index==-1)?keyNpc.append(new KeyNpc):keyNpc.insert(index,new KeyNpc);emit sAdd(tKeyNpc);}
+    void addNormalNPC(int index=-1){(index==-1)?normalNpc.append(new NormalNpc):normalNpc.insert(index,new NormalNpc);emit sAdd(tNormalNpc);}
+    void addBattleScene(int index=-1){(index==-1)?battleScene.append(new BattleScene):battleScene.insert(index,new BattleScene);emit sAdd(tBattleScene);}
+    void addNormalScene(int index=-1){(index==-1)?normalScene.append(new NormalScene):normalScene.insert(index,new NormalScene);emit sAdd(tNormalScene);}
     QString getName(){return name;}
     QString getSummary(){return summary;}
     QString getAnnouncement(){return announcement;}
@@ -51,6 +55,10 @@ private:
     QList<NormalNpc*> normalNpc;
     QList<BattleScene*> battleScene;
     QList<NormalScene*> normalScene;
+
+signals:
+    void sAdd(type T);
+
 };
 
 } // namespace ptzs

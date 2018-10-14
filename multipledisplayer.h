@@ -5,6 +5,8 @@
 #include <QStackedWidget>
 #include <QGridLayout>
 #include "clickablelabel.h"
+#include "data.h"
+#include "type.h"
 #include "mapeditor.h"
 #include "keynpceditor.h"
 #include "normalnpceditor.h"
@@ -16,14 +18,6 @@ class MultipleDisplayer : public QWidget
 {
     Q_OBJECT
 public:
-    enum type
-    {
-        map,
-        keyNpc,
-        normalNpc,
-        battleScene,
-        normalScene,
-    };
     explicit MultipleDisplayer(QWidget *parent = nullptr);
     MultipleDisplayer(type t,QWidget *parent = nullptr);
 
@@ -40,6 +34,7 @@ signals:
 public slots:
     void showLast();
     void showNext();
+    void addWidget(type t);
     void addWidget();
 
 };

@@ -77,7 +77,8 @@ HEADERS += \
     scenewidget.h \
     border.h \
     multipledisplayer.h \
-    data.h
+    data.h \
+    type.h
 
 FORMS +=
 

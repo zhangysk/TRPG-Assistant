@@ -7,4 +7,5 @@
 extern QFont myFont;
 extern ptzs::Script script;
 
+
 #endif // DATA_H

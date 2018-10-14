@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QStackedWidget>
 #include <QFileDialog>
+#include "data.h"
 #include "clickablelabel.h"
 #include "filewidget.h"
 #include "infowidget.h"
