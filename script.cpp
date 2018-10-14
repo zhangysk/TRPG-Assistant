@@ -4,14 +4,6 @@ namespace ptzs {
 
 Script::Script()
 {
-        name="123";
-        summary="123";
-        announcement="123";
-        maps.append(new Map);
-        keyNpc.append(new KeyNpc);
-        normalNpc.append(new NormalNpc);
-        battleScene.append(new BattleScene);
-        normalScene.append(new NormalScene);
 }
 
 void Script::scriptSaveAll(QString path){
@@ -37,31 +29,31 @@ void Script::scriptSaveAll(QString path){
     for(int i = 0; i < this->battleScene.size(); i++){
         QString tmpPath = battleScenesPath + this->getBattleScene(i)->getName();
         for(int j = 0; j < this->getBattleScene(i)->picNum(); j++){
-            QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
+            QFileInfo fileInfo(this->getBattleScene(i)->getPics(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            QFile::copy(this->getBattleScene(i)->getPics()->at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics(j),tmpPath2);
         }
         for(int j = 0; j < this->getBattleScene(i)->musicNum(); j++){
-            QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
+            QFileInfo fileInfo(this->getBattleScene(i)->getPics(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            QFile::copy(this->getBattleScene(i)->getPics()->at(j),tmpPath2);
+            QFile::copy(this->getBattleScene(i)->getPics(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->normalScene.size(); i++){
         QString tmpPath = normalScenesPath + this->getNormalScene(i)->getName();
         for(int j = 0; j < this->getNormalScene(i)->picNum(); j++){
-            QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
+            QFileInfo fileInfo(this->getNormalScene(i)->getPics(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
-            QFile::copy(this->getNormalScene(i)->getPics()->at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics(j),tmpPath2);
         }
         for(int j = 0; j < this->getNormalScene(i)->musicNum(); j++){
-            QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
+            QFileInfo fileInfo(this->getNormalScene(i)->getPics(j));
             QString fileSuffix = fileInfo.suffix();
             QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
-            QFile::copy(this->getNormalScene(i)->getPics()->at(j),tmpPath2);
+            QFile::copy(this->getNormalScene(i)->getPics(j),tmpPath2);
         }
     }
     for(int i = 0; i < this->keyNpc.size(); i++){
@@ -110,9 +102,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeTextElement("introduction",this->getNormalScene(i)->getIntro());
             indexWriter.writeStartElement("pics");
             QString counter = "1";
-            for(int j = 0; j < this->getNormalScene(i)->getPicInfo()->size(); j++){
-                indexWriter.writeTextElement("summary of pic" + counter,this->getNormalScene(i)->getPicInfo()->at(j));
-                QFileInfo fileInfo(this->getNormalScene(i)->getPics()->at(j));
+            for(int j = 0; j < this->getNormalScene(i)->picNum(); j++){
+                indexWriter.writeTextElement("summary of pic" + counter,this->getNormalScene(i)->getPicInfo(j));
+                QFileInfo fileInfo(this->getNormalScene(i)->getPics(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of pic"+counter,tmpPath2);
@@ -121,9 +113,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeEndElement();
             indexWriter.writeStartElement("musics");
             counter = "1";
-            for(int j = 0; j < this->getNormalScene(i)->getMusicInfo()->size(); j++){
-                indexWriter.writeTextElement("summary of music"+counter,this->getNormalScene(i)->getMusicInfo()->at(j));
-                QFileInfo fileInfo(this->getNormalScene(i)->getMusics()->at(j));
+            for(int j = 0; j < this->getNormalScene(i)->musicNum(); j++){
+                indexWriter.writeTextElement("summary of music"+counter,this->getNormalScene(i)->getMusicInfo(j));
+                QFileInfo fileInfo(this->getNormalScene(i)->getMusics(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of music"+counter,tmpPath2);
@@ -141,9 +133,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeTextElement("introduction",this->getBattleScene(i)->getIntro());
             indexWriter.writeStartElement("pics");
             QString counter = "1";
-            for(int j = 0; j < this->getBattleScene(i)->getPicInfo()->size(); j++){
-                indexWriter.writeTextElement("summary of pic"+counter,this->getBattleScene(i)->getPicInfo()->at(j));
-                QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
+            for(int j = 0; j < this->getBattleScene(i)->picNum(); j++){
+                indexWriter.writeTextElement("summary of pic"+counter,this->getBattleScene(i)->getPicInfo(j));
+                QFileInfo fileInfo(this->getBattleScene(i)->getPics(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/pic" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of pic"+counter,tmpPath2);
@@ -152,9 +144,9 @@ void Script::scriptSaveAllXml(QString path){
             indexWriter.writeEndElement();
             indexWriter.writeStartElement("musics");
             counter = "1";
-            for(int j = 0; j < this->getBattleScene(i)->getMusicInfo()->size(); j++){
-                indexWriter.writeTextElement("summary of music"+counter,this->getBattleScene(i)->getMusicInfo()->at(j));
-                QFileInfo fileInfo(this->getBattleScene(i)->getPics()->at(j));
+            for(int j = 0; j < this->getBattleScene(i)->musicNum(); j++){
+                indexWriter.writeTextElement("summary of music"+counter,this->getBattleScene(i)->getMusicInfo(j));
+                QFileInfo fileInfo(this->getBattleScene(i)->getPics(j));
                 QString fileSuffix = fileInfo.suffix();
                 QString tmpPath2 = tmpPath + "/music" + counter + "." + fileSuffix;
                 indexWriter.writeTextElement("path of music"+counter,tmpPath2);
@@ -234,5 +226,208 @@ void Script::scriptSaveAllXml(QString path){
     indexWriter.writeEndElement();
     indexWriter.writeEndElement();
 }
+void Script::scriptReadAll(QString path){
+    QFile xmlFile(path);
+    if(!xmlFile.open(QFile::ReadOnly)){
+        return;
+    }
 
+    QDomDocument doc;
+    if(!doc.setContent(&xmlFile)){
+        xmlFile.close();
+        return;
+    }
+    xmlFile.close();
+
+    QDomElement root = doc.documentElement();
+    QDomNode node = root.firstChild();
+    int tmpMapNum;
+    int tmpKeyNpcNum;
+    int tmpNormalNpcNum;
+    int tmpNormalSceneNum;
+    int tmpBattleSceneNum;
+    while(!node.isNull()){
+        if(node.nodeName() == "index"){
+            QDomElement s = node.toElement();
+            QDomNodeList tmpNode = s.childNodes();
+            for(int k = 0; k < tmpNode.size(); k++){
+                if(tmpNode.at(k).nodeName() == "summary"){
+                    this->setSummary(tmpNode.at(k).nodeValue());
+                }
+                else if(tmpNode.at(k).nodeName() == "announcement"){
+                    this->setAnnouncement(tmpNode.at(k).nodeValue());
+                }
+                else if(tmpNode.at(k).nodeName() == "numOfMaps"){
+                    tmpMapNum = tmpNode.at(k).nodeValue().toInt();
+                }
+                else if(tmpNode.at(k).nodeName() == "numOfKeyNpc"){
+                    tmpKeyNpcNum = tmpNode.at(k).nodeValue().toInt();
+                }
+                else if(tmpNode.at(k).nodeName() == "numOfNormalNpc"){
+                    tmpNormalNpcNum = tmpNode.at(k).nodeValue().toInt();
+                }
+                else if(tmpNode.at(k).nodeName() == "numOfNormalScene"){
+                    tmpNormalSceneNum = tmpNode.at(k).nodeValue().toInt();
+                }
+                else if(tmpNode.at(k).nodeName() == "numOfBattleScene"){
+                    tmpBattleSceneNum = tmpNode.at(k).nodeValue().toInt();
+                }
+                else if(tmpNode.at(k).nodeName() == "maps"){
+                    QDomElement g = tmpNode.at(k).toElement();
+                    QDomNodeList mapNode = g.childNodes();
+                    for(int i = 0; i < tmpMapNum; i++){
+                        this->addMap();
+                        this->getMap(i)->setName(mapNode.at(i).nodeName());
+                        QDomElement z = mapNode.at(i).toElement();
+                        QDomNodeList tmpInfo = z.childNodes();
+                        for(int j = 0; j < tmpInfo.size(); j++){
+                            if(tmpInfo.at(j).nodeName() == "summary"){
+                                this->getMap(i)->setIntroduction(tmpInfo.at(j).nodeValue());
+                            }
+                            else if(tmpInfo.at(j).nodeName() == "path"){
+                                this->getMap(i)->setPicFile(tmpInfo.at(j).nodeValue());
+                            }
+                        }
+                    }
+                }
+                else if(tmpNode.at(k).nodeName() == "normalNpc"){
+                    QDomElement g = tmpNode.at(k).toElement();
+                    QDomNodeList normalNpcNode = g.childNodes();
+                    for(int i = 0; i < tmpNormalNpcNum; i++){
+                        this->addNormalNPC();
+                        this->getNormalNPC(i)->setName(normalNpcNode.at(i).nodeName());
+                        QDomElement z = normalNpcNode.at(i).toElement();
+                        QDomNodeList tmpInfo = z.childNodes();
+                        for(int j = 0; j < tmpInfo.size(); j++){
+                            if(tmpInfo.at(j).nodeName() == "age"){
+                                this->getNormalNPC(i)->setAge(tmpInfo.at(j).nodeValue().toInt());
+                            }
+                            else if(tmpInfo.at(j).nodeName() == "sex"){
+                                this->getNormalNPC(i)->setSex((KeyNpc::esex)tmpInfo.at(j).nodeValue().toInt());
+                            }
+                            else if(tmpInfo.at(j).nodeName() == "information"){
+                                this->getNormalNPC(i)->setGeRenXinXi(tmpInfo.at(j).nodeValue());
+                            }
+                            else if(tmpInfo.at(j).nodeName() == "avatar"){
+                                this->getNormalNPC(i)->setAvatar(tmpInfo.at(j).nodeValue());
+                            }
+                        }
+                    }
+                }
+                else if(tmpNode.at(k).nodeName() == "keyNpc"){
+                    QDomElement g = tmpNode.at(k).toElement();
+                    QDomNodeList keyNpcNode = g.childNodes();
+                    for(int i = 0; i < tmpKeyNpcNum; i++){
+                        this->getKeyNPC(i)->setName(keyNpcNode.at(i).nodeName());
+                        QDomElement z = keyNpcNode.at(i).toElement();
+                        QDomNodeList tmpInfo = z.childNodes();
+                        for(int j = 0; j < tmpInfo.size(); j++){
+                            QDomNode tmpSave = tmpInfo.at(j);
+                            if(tmpInfo.at(j).nodeName() == "sex"){
+                                this->getKeyNPC(i)->setSex((KeyNpc::esex)tmpInfo.at(j).nodeValue().toInt());
+                            }
+                            else if(tmpSave.nodeName() == "age"){
+                                this->getKeyNPC(i)->setAge(tmpInfo.at(j).nodeValue().toInt());
+                            }
+                            else if(tmpSave.nodeName() == "information"){
+                                this->getKeyNPC(i)->setRenWuMiaoShu(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "pathOfPhoto"){
+                                this->getKeyNPC(i)->setAvatar(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "job"){
+                                this->getKeyNPC(i)->setJob((KeyNpc::eJob)tmpSave.nodeValue().toInt());
+                            }
+                            else if(tmpSave.nodeName() == "preciousThing"){
+                                this->getKeyNPC(i)->setBaoGuiZhiWu(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "bornArea"){
+                                this->getKeyNPC(i)->setBornArea(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "fearAndFantacism"){
+                                this->getKeyNPC(i)->setKongJu_kuangRe(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "traumas"){
+                                this->getKeyNPC(i)->setChuangShang_BaHen(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "closeEncounters"){
+                                this->getKeyNPC(i)->setDiSanLeiJieChu(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "livaArea"){
+                                this->getKeyNPC(i)->setLiveArea(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "class"){
+                                this->getKeyNPC(i)->setShengHuoShuiPing((KeyNpc::eLivingStantard)tmpSave.nodeValue().toInt());
+                            }
+                            else if(tmpSave.nodeName() == "paternoster"){
+                                this->getKeyNPC(i)->setShenMiJuanZhou_ZhouWen_GuWenWu(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "belief"){
+                                this->getKeyNPC(i)->setSiNian_xinNian(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "characteristic"){
+                                this->getKeyNPC(i)->setTeDian(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "Tools"){
+                                this->getKeyNPC(i)->setXieDaiWuPin(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "significantPlace"){
+                                this->getKeyNPC(i)->setYiYiFeiFanZhiDi(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "significantOther"){
+                                this->getKeyNPC(i)->setZhongYaoZhiRen(tmpSave.nodeValue());
+                            }
+                            else if(tmpSave.nodeName() == "weapons"){
+                                QDomElement g = tmpSave.toElement();
+                                QDomNodeList weaponNode = g.childNodes();
+                                for(int q = 0; q < 4; q++){
+                                    KeyNpc::sWeapon tmpWeapon;
+                                    tmpWeapon.weapon = weaponNode.at(q).nodeName();
+                                    QDomElement z = weaponNode.at(q).toElement();
+                                    QDomNodeList tmpWeaponInfo = z.childNodes();
+                                    for(int l = 0; l < tmpWeaponInfo.size(); l++){
+                                        if(tmpWeaponInfo.at(l).nodeName() == "ammo"){
+                                            tmpWeapon.ammo = tmpWeaponInfo.at(l).nodeValue().toInt();
+                                        }
+                                        else if(tmpWeaponInfo.at(l).nodeName() == "damage"){
+                                            tmpWeapon.damage = tmpWeaponInfo.at(l).nodeValue().toInt();
+                                        }
+                                        else if(tmpWeaponInfo.at(l).nodeName() == "difficulty"){
+                                            tmpWeapon.difficulty = tmpWeaponInfo.at(l).nodeValue().toInt();
+                                        }
+                                        else if(tmpWeaponInfo.at(l).nodeName() == "range"){
+                                            tmpWeapon.range = tmpWeaponInfo.at(l).nodeValue().toInt();
+                                        }
+                                        else if(tmpWeaponInfo.at(l).nodeName() == "times"){
+                                            tmpWeapon.times = tmpWeaponInfo.at(l).nodeValue().toInt();
+                                        }
+                                        else if(tmpWeaponInfo.at(l).nodeName() == "mulfucntion"){
+                                            tmpWeapon.mulfunction = tmpWeaponInfo.at(l).nodeValue();
+                                        }
+                                    }
+                                    this->getKeyNPC(i)->setWeapon(q,tmpWeapon);
+                                }
+                            }
+                            else if(tmpSave.nodeName() == "skills"){
+                                QDomElement g = tmpSave.toElement();
+                                QDomNodeList skillInfo = g.childNodes();
+                                for(int q = 0; q < KeyNpc::skillNum; q++){
+                                    this->getKeyNPC(i)->setSkill((KeyNpc::eSkill)q,skillInfo.at(q).nodeValue().toInt());
+                                }
+                            }
+                            else if(tmpSave.nodeName() == "Attributes"){
+                                QDomElement g = tmpSave.toElement();
+                                QDomNodeList attributeInfo = g.childNodes();
+                                for(int q = 0; q < KeyNpc::attributeNum; q++){
+                                    this->getKeyNPC(i)->setAttribute((KeyNpc::eAttribute)q,attributeInfo.at(q).nodeValue().toInt());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        node = node.nextSibling();
+    }
+}
 } // namespace ptzs

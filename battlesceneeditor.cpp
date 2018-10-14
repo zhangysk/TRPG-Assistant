@@ -54,8 +54,7 @@ void BattleSceneEditor::addPicFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getPics()->append("");
-    scene->getPicInfo()->append("");
+    scene->addPic();
 }
 
 void BattleSceneEditor::addBgmFile()
@@ -88,8 +87,7 @@ void BattleSceneEditor::addBgmFile()
     }
     layout->addWidget(addBgm,scenePics.count()+bgmFiles.count()+1,0,1,4);
     widget->setMinimumHeight(210*scenePics.count()+bgmFiles.count()*25+240);
-    scene->getMusics()->append("");
-    scene->getMusicInfo()->append("");
+    scene->addMusic();
 }
 
 void BattleSceneEditor::setPicFile(ClickableLabel* p)
@@ -108,7 +106,7 @@ void BattleSceneEditor::setPicFile(ClickableLabel* p)
     if(fileName.size())
     {
         p->setPixmap(QPixmap(fileName.first()).scaled(p->size(),Qt::KeepAspectRatio));
-        scene->getPics()->replace(scenePics.indexOf(p),fileName.first());
+        scene->setPic(scenePics.indexOf(p),fileName.first());
     }
 }
 
@@ -136,18 +134,18 @@ void BattleSceneEditor::setBgmFile(ClickableLabel *p)
     if(fileName.size())
     {
         bgmFiles.at(selectBgmFiles.indexOf(p))->setText(fileName.first());
-        scene->getMusics()->replace(selectBgmFiles.indexOf(p),fileName.first());
+        scene->setMusic(selectBgmFiles.indexOf(p),fileName.first());
     }
 }
 
 void BattleSceneEditor::setPicInfo()
 {
-    scene->getPicInfo()->replace(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
+    scene->setPicInfo(picInfos.indexOf((QTextEdit*)sender()),((QTextEdit*)sender())->toPlainText());
 }
 
 void BattleSceneEditor::setBgmInfo(QString s)
 {
-    scene->getMusicInfo()->replace(bgmInfo.indexOf((QLineEdit*)sender()),s);
+    scene->setMusicInfo(bgmInfo.indexOf((QLineEdit*)sender()),s);
 }
 
 } // namespace ptzs

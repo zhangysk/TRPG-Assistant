@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT += multimedia
+QT+= xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,9 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     mainwindow.cpp \
-    tabwidget.cpp \
     editarea.cpp \
-    treewidget.cpp \
     summaryeditor.cpp \
     announcementeditor.cpp \
     mapeditor.cpp \
@@ -55,9 +54,7 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
-    tabwidget.h \
     editarea.h \
-    treewidget.h \
     summaryeditor.h \
     announcementeditor.h \
     mapeditor.h \

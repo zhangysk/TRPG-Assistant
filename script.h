@@ -5,6 +5,7 @@
 #include <QFileInfo>
 #include <QXmlStreamWriter>
 #include <QTextEdit>
+#include <QDomDocument>
 #include "map.h"
 #include "keynpc.h"
 #include "battlescene.h"
@@ -39,6 +40,7 @@ public slots:
     int normalSceneNum(){return normalScene.count();}
     void scriptSaveAll(QString path);
     void scriptSaveAllXml(QString path);
+    void scriptReadAll(QString path);
 
 private:
     QString name;

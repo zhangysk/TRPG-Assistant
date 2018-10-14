@@ -2,14 +2,10 @@
 
 namespace ptzs {
 
-NormalScene::NormalScene()
+NormalScene::NormalScene(const QString &n,const QString &i)
 {
-    name="输入场景名称";
-    intro="场景介绍";
-    pics.append("");
-    picInfo.append("");
-    musics.append("");
-    musicInfo.append("");
+    name=n;
+    intro=i;
 }
 
 } // namespace ptzs
