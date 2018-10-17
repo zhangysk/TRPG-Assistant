@@ -9,8 +9,8 @@ SceneWidget::SceneWidget(QWidget *parent) : QWidget(parent)
     battleScene=new ClickableLabel(this);
     layout->addWidget(normalScene);
     layout->addWidget(battleScene);
-    normalScene->setPixmap(QPixmap(":png/normalnpc.png"));
-    battleScene->setPixmap(QPixmap(":png/keynpc.png"));
+    normalScene->setPixmap(QPixmap(":png/img/normalnpc.png"));
+    battleScene->setPixmap(QPixmap(":png/img/keynpc.png"));
 }
 
 } // namespace ptzs

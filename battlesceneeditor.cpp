@@ -16,8 +16,8 @@ BattleSceneEditor::BattleSceneEditor(BattleScene *s,QWidget *parent) : QScrollAr
     addPic->setMinimumHeight(200);
     addBgm->setMinimumHeight(20);
     addBgm->setMaximumHeight(20);
-    addPic->setPixmap(QPixmap(":/png/addpicfile.png"));
-    addBgm->setPixmap(QPixmap(":/png/addbgmfile.png"));
+    addPic->setPixmap(QPixmap(":/png/img/addpicfile.png"));
+    addBgm->setPixmap(QPixmap(":/png/img/addbgmfile.png"));
 
     _layout->addWidget(widget);
     layout->addWidget(addPic,0,0);
@@ -34,7 +34,7 @@ void BattleSceneEditor::addPicFile()
     layout->setColumnStretch(1,1);
     layout->setColumnStretch(2,4);
     scenePics.append(new ClickableLabel);
-    scenePics.last()->setPixmap(QPixmap(":/png/openfile.png"));
+    scenePics.last()->setPixmap(QPixmap(":/png/img/openfile.png"));
     scenePics.last()->setMinimumHeight(200);
     picInfos.append(new QTextEdit);
     connect(scenePics.last(),SIGNAL(clicked(ClickableLabel*)),this,SLOT(setPicFile(ClickableLabel*)));

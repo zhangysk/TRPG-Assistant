@@ -9,8 +9,8 @@ NpcWidget::NpcWidget(QWidget *parent) : QWidget(parent)
     keyNpc=new ClickableLabel(this);
     layout->addWidget(normalNpc);
     layout->addWidget(keyNpc);
-    normalNpc->setPixmap(QPixmap(":png/normalnpc.png"));
-    keyNpc->setPixmap(QPixmap(":png/keynpc.png"));
+    normalNpc->setPixmap(QPixmap(":png/img/normalnpc.png"));
+    keyNpc->setPixmap(QPixmap(":png/img/keynpc.png"));
 }
 
 } // namespace ptzs

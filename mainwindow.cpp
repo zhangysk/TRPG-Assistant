@@ -5,7 +5,7 @@ using namespace ptzs;
 MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
 {
     QPalette palette;
-    background.load(":png/armstrong_1.png");
+    background.load(":png/img/armstrong_1.png");
     setAutoFillBackground(true);
 
     int i=QFontDatabase::addApplicationFont(":/font/HYZhuZiHeiMoFaW.ttf");
@@ -35,11 +35,11 @@ MainWindow::MainWindow(QWidget *parent) : QFrame(parent)
     setWindowFlags(Qt::FramelessWindowHint);
 
     save->setPixmap(QPixmap("qrc:/png/save.png"));
-    close->setPixmap(QPixmap(":png/close.png"));
+    close->setPixmap(QPixmap(":png/img/close.png"));
     close->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
-    minimize->setPixmap(QPixmap(":png/close.png"));
+    minimize->setPixmap(QPixmap(":png/img/close.png"));
     minimize->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
-    maximize->setPixmap(QPixmap(":png/close.png"));
+    maximize->setPixmap(QPixmap(":png/img/close.png"));
     maximize->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
 
     layout=new QGridLayout(this);

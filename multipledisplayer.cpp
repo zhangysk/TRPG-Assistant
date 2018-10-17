@@ -9,9 +9,9 @@ MultipleDisplayer::MultipleDisplayer(QWidget *parent) : QWidget(parent)
     right=new ClickableLabel(this);
     widgets=new QStackedWidget(this);
     widgets->addWidget(new ClickableLabel);
-    ((ClickableLabel*)(widgets->widget(0)))->setPixmap(QPixmap(":/png/add.png"));
-    right->setPixmap(QPixmap(":/png/next.png"));
-    left->setPixmap(QPixmap(":/png/last.png"));
+    ((ClickableLabel*)(widgets->widget(0)))->setPixmap(QPixmap(":/png/img/add.png"));
+    right->setPixmap(QPixmap(":/png/img/next.png"));
+    left->setPixmap(QPixmap(":/png/img/last.png"));
     right->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
     left->setMaximumWidth(50);
     right->setMaximumWidth(50);
@@ -33,9 +33,9 @@ MultipleDisplayer::MultipleDisplayer(type t,QWidget *parent) : QWidget(parent)
     right=new ClickableLabel(this);
     widgets=new QStackedWidget(this);
     widgets->addWidget(new ClickableLabel);
-    ((ClickableLabel*)(widgets->widget(0)))->setPixmap(QPixmap(":/png/add.png"));
-    right->setPixmap(QPixmap(":/png/next.png"));
-    left->setPixmap(QPixmap(":/png/last.png"));
+    ((ClickableLabel*)(widgets->widget(0)))->setPixmap(QPixmap(":/png/img/add.png"));
+    right->setPixmap(QPixmap(":/png/img/next.png"));
+    left->setPixmap(QPixmap(":/png/img/last.png"));
     right->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
     left->setMaximumWidth(50);
     right->setMaximumWidth(50);
@@ -46,6 +46,7 @@ MultipleDisplayer::MultipleDisplayer(type t,QWidget *parent) : QWidget(parent)
     connect(left,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showLast()));
     connect(right,SIGNAL(clicked(ClickableLabel*)),this,SLOT(showNext()));
     connect((ClickableLabel*)(widgets->widget(0)),SIGNAL(clicked(ClickableLabel*)),this,SLOT(addWidget()));
+    connect(&script,SIGNAL(sAdd(type)),this,SLOT(addWidget(type)));
 }
 
 void MultipleDisplayer::showLast()
@@ -90,19 +91,19 @@ void MultipleDisplayer::addWidget()
 {
     switch (T) {
     case tMap:
-        widgets->insertWidget(widgets->count()-1,new MapEditor(script.getMap(script.mapNum()-1),this));
+        script.addMap();
         break;
     case tKeyNpc:
-        widgets->insertWidget(widgets->count()-1,new KeyNpcEditor(script.getKeyNPC(script.keyNpcNum()-1),this));
+        script.addKeyNPC();
         break;
     case tNormalNpc:
-        widgets->insertWidget(widgets->count()-1,new NormalNpcEditor(script.getNormalNPC(script.normalNpcNum()-1),this));
+        script.addNormalNPC();
         break;
     case tBattleScene:
-        widgets->insertWidget(widgets->count()-1,new BattleSceneEditor(script.getBattleScene(script.battleSceneNum()-1),this));
+        script.addBattleScene();
         break;
     case tNormalScene:
-        widgets->insertWidget(widgets->count()-1,new NormalSceneEditor(script.getNormalScene(script.normalSceneNum()-1),this));
+        script.addNormalScene();
         break;
     default:
         widgets->insertWidget(widgets->count()-1,new QWidget);

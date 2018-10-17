@@ -15,7 +15,7 @@ MapEditor::MapEditor(Map *m,QWidget *parent) : QWidget(parent)
     te->setStyleSheet("background-color:transparent;");
     label=new ClickableLabel;
     label->setMinimumSize(200,200);
-    pixmap.load(":png/map.png");
+    pixmap.load(":png/img/map.png");
     label->setPixmap(pixmap.scaled(label->size(),Qt::KeepAspectRatio));
     label->setAlignment(Qt::AlignCenter);
     layout=new QVBoxLayout(this);

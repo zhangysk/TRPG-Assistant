@@ -25,11 +25,11 @@ EditArea::EditArea(QWidget *parent) : QFrame(parent)
     widget->addWidget(new MultipleDisplayer(tNormalScene,widget));
     widget->addWidget(new MultipleDisplayer(tBattleScene,widget));
 
-    file->setPixmap(QPixmap(":png/tag10.png"));
-    info->setPixmap(QPixmap(":png/tag21.png"));
-    npc->setPixmap(QPixmap(":png/tag31.png"));
-    scene->setPixmap(QPixmap(":png/tag41.png"));
-    background->setPixmap(QPixmap(":png/background.png"));
+    file->setPixmap(QPixmap(":png/img/tag10.png"));
+    info->setPixmap(QPixmap(":png/img/tag21.png"));
+    npc->setPixmap(QPixmap(":png/img/tag31.png"));
+    scene->setPixmap(QPixmap(":png/img/tag41.png"));
+    background->setPixmap(QPixmap(":png/img/background.png"));
 
     background->setCursor(Qt::ArrowCursor);
     file->setScaledContents(true);
@@ -107,40 +107,40 @@ void EditArea::changeState(ClickableLabel *p)
     if(p==file&&st!=File)
     {
         st=File;
-        file->setPixmap(QPixmap(":png/tag10.png"));
-        info->setPixmap(QPixmap(":png/tag21.png"));
-        npc->setPixmap(QPixmap(":png/tag31.png"));
-        scene->setPixmap(QPixmap(":png/tag41.png"));
+        file->setPixmap(QPixmap(":png/img/tag10.png"));
+        info->setPixmap(QPixmap(":png/img/tag21.png"));
+        npc->setPixmap(QPixmap(":png/img/tag31.png"));
+        scene->setPixmap(QPixmap(":png/img/tag41.png"));
         widget->setCurrentIndex(0);
         resizeEvent(nullptr);
     }
     else if(p==info&&st!=Info)
     {
         st=Info;
-        file->setPixmap(QPixmap(":png/tag11.png"));
-        info->setPixmap(QPixmap(":png/tag20.png"));
-        npc->setPixmap(QPixmap(":png/tag31.png"));
-        scene->setPixmap(QPixmap(":png/tag41.png"));
+        file->setPixmap(QPixmap(":png/img/tag11.png"));
+        info->setPixmap(QPixmap(":png/img/tag20.png"));
+        npc->setPixmap(QPixmap(":png/img/tag31.png"));
+        scene->setPixmap(QPixmap(":png/img/tag41.png"));
         widget->setCurrentIndex(1);
         resizeEvent(nullptr);
     }
     else if(p==npc&&st!=Npc)
     {
         st=Npc;
-        file->setPixmap(QPixmap(":png/tag11.png"));
-        info->setPixmap(QPixmap(":png/tag21.png"));
-        npc->setPixmap(QPixmap(":png/tag30.png"));
-        scene->setPixmap(QPixmap(":png/tag41.png"));
+        file->setPixmap(QPixmap(":png/img/tag11.png"));
+        info->setPixmap(QPixmap(":png/img/tag21.png"));
+        npc->setPixmap(QPixmap(":png/img/tag30.png"));
+        scene->setPixmap(QPixmap(":png/img/tag41.png"));
         widget->setCurrentIndex(2);
         resizeEvent(nullptr);
     }
     else if(p==scene&&st!=Scene)
     {
         st=Scene;
-        file->setPixmap(QPixmap(":png/tag11.png"));
-        info->setPixmap(QPixmap(":png/tag21.png"));
-        npc->setPixmap(QPixmap(":png/tag31.png"));
-        scene->setPixmap(QPixmap(":png/tag40.png"));
+        file->setPixmap(QPixmap(":png/img/tag11.png"));
+        info->setPixmap(QPixmap(":png/img/tag21.png"));
+        npc->setPixmap(QPixmap(":png/img/tag31.png"));
+        scene->setPixmap(QPixmap(":png/img/tag40.png"));
         widget->setCurrentIndex(3);
         resizeEvent(nullptr);
     }

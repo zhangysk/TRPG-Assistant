@@ -50,7 +50,8 @@ SOURCES += \
     scenewidget.cpp \
     border.cpp \
     multipledisplayer.cpp \
-    script.cpp
+    script.cpp \
+    event.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -78,7 +79,8 @@ HEADERS += \
     border.h \
     multipledisplayer.h \
     data.h \
-    type.h
+    type.h \
+    event.h
 
 FORMS +=
 
